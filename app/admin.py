@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 from flask_login import login_required
 from .loader import admin_required
-from .models import User
+# from .models import User
 
 admin = Blueprint("admin", __name__)
 
@@ -17,5 +17,5 @@ def admin_dashboard():
 @login_required
 @admin_required
 def manage_users():
-    users = User.query.all()
+    # users = User.query.all()
     return render_template("manage_users.html")

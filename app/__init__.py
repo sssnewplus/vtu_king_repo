@@ -33,30 +33,11 @@ def create_app():
     login_manager.login_message_category = 'info'
 
     # user loader for the login manager
-    @login_manager.user_loader  
+    @login_manager.user_loader
     def user_loader(user_id):
         from app.models import User
         return User.query.get(user_id)
 
-    # registering routes/endpoints of the app
-    from app.admin import admin
-    from app.auth import auth
-    from app.views import view
-    app.register_blueprint(admin)
-    app.register_blueprint(auth)
-    app.register_blueprint(view)
-    return app
-
-    # init. login manager
-    login_manager.init_app(app)
-    login_manager.login_view = 'login'
-    login_manager.login_message_category = 'info'
-
-    # user loader for the login manager
-    @login_manager.user_loader  
-    def user_loader(user_id):
-        from app.models import User
-        return User.query.get(user_id)
 
     # registering routes/endpoints of the app
     from app.admin import admin
