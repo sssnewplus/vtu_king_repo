@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash,
 from flask_login import login_required, current_user
 from .models import Transaction
 from . import  db
-from .services import buy_airtime, transfer_to_granny
+from .services import transfer_to_granny, buy_airtime
 
 
 # blueprint definition

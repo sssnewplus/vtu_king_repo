@@ -15,7 +15,8 @@ class User(db.Model, UserMixin):
     phone_number = db.Column(db.String(15), nullable=False) # store user phone number
     balance = db.Column(db.Float, default=0.0) # store user balance
     api_wallet_id = db.Column(db.String(200)) # store id of api wallet
-    pin = db.Column(db.String(4), nullable=True) # store user pin for trxn
+    api_wallet_account_number = db.Column(db.String(200)) # store api wallet account number
+    pin = db.Column(db.String(4), nullable=True) # store user pin for transaction
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc)) # store time when the user was created
     updated_at = db.Column(db.DateTime, onupdate=lambda: datetime.now(timezone.utc)) # store time when the user was updated
     # deleted_at = db.Column(db.DateTime, ondelete=lambda: datetime.now(timezone.utc)) # store time when the user was deleted
