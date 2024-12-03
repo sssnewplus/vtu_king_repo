@@ -6,31 +6,57 @@
 
 {% block content %}
     <div class="auth-wrapper">
+        <button class="get-back-btn" name="username_submit_btn">
+            <i class="fas fa-arrow" style="color: #06283D; font-size: 24px;"></i>
+            back
+        </button>
         <div class="auth-box">
             <!-- <img src="{{ url_for('static', filename='images/auth_images/icon.png')}}" class="sign-up-icon"> -->
-            <h1 class="auth-heading"><strong>Sign Up</strong></h1>
+            <h1 class="auth-heading"><strong>Welcome!</strong></h1>
+            <p class="have-account">Register your account</p>
             <br>
             <form class="auth-form" method="post">
-                <label for="name">Full Name</label>
-                <input type="text" placeholder="enter your fullname" id="full_name" name="full_name">
-                <label for="username">Username</label>
-                <input type="text" placeholder="generate username" id="username" name="username">
-                <label for="email">Email Address</label>
-                <input type="email" placeholder="enter valid email" id="email" name="email">
-                <label for="phone">Phone Number</label>
-                <input type="tel" placeholder="enter valid phone number" id="phone_number" name="phone_number">
-                <label for="referral">Referral Username</label>
-                <input type="text" placeholder="enter referral username (optional)" id="referral" name="referral_username">
-                <label for="password1">Password</label>
-                <input type="password" placeholder="Password" id="password1" name="password1">
-                <label for="password2">Confirm Password</label>
-                <input type="password" placeholder="re-enter password" id="password2" name="password2">
-                <div class="submit-container">
-                    <button type="submit" class="submit-btn">Sign Up</button>
+                <!-- <label for="name">Full Name</label> -->
+                <div class="input-container">
+                    <i class="fas fa-user" style="color: #06283D; font-size: 24px;"></i>
+                    <input type="text" class="input" placeholder="Fullname" id="full_name" name="full_name">
                 </div>
-                <p class="terms">
-                    By clicking the Sign Up button, you agree to our
-                    <a class="term" href="#">Policy Privacy</a> and our <a class="term" href="#">Terms and Conditions</a>
+                <!-- <label for="username">Username</label> -->
+                <div class="input-container">
+                    <i class="fas fa-user" style="color: #06283D; font-size: 24px;"></i>
+                    <input type="text" class="input" placeholder="Username" id="username" name="username">
+                </div>
+                <!-- <label for="email">Email Address</label> -->
+                <div class="input-container">
+                    <i class="fas fa-envelope" style="color: #06283D; font-size: 24px;"></i>
+                    <input type="email" class="input" placeholder="Email" id="email" name="email">
+                </div>
+                <!-- <label for="phone">Phone Number</label> -->
+                <div class="input-container">
+                    <i class="fas fa-phone" style="color: #06283D; font-size: 24px;"></i>
+                    <input type="tel" class="input" placeholder="Phone number" id="phone_number" name="phone_number">
+                </div>
+                <!-- <label for="referral">Referral Username</label> -->
+                <div class="input-container">
+                    <i class="fas fa-user" style="color: #06283D; font-size: 24px;"></i>
+                    <input type="text" class="input" placeholder="Referral username (optional)" id="referral" name="referral_username">
+                </div>
+                <!-- <label for="password1">Password</label> -->
+                <div class="input-container">
+                    <i class="fas fa-lock" style="color: #06283D; font-size: 24px;"></i>
+                    <input type="password" class="input" placeholder="Password" id="password1" name="password1">
+                </div>
+                <!-- <label for="password2">Confirm Password</label> -->
+                <div class="input-container">
+                    <i class="fas fa-lock" style="color: #06283D; font-size: 24px;"></i>
+                    <input type="password" class="input" placeholder="Re-enter password" id="password2" name="password2">
+                </div>
+                <div class="submit-container">
+                    <button type="submit" class="submit-btn">Register</button>
+                </div>
+                <p class="have-account">
+                    By clicking the register button, you agree to our
+                    <a class="term" href="#">Policy Privacy</a> and <a class="term" href="#">Terms and Conditions</a>
                 </p>
                 <p class="have-account">Alredy have account? <a class="term" href="/login">Login</a></p>
             </form>

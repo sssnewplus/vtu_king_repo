@@ -56,7 +56,7 @@ def sign_up():
         # check if name is valid
         elif not name.isalpha() or not name.strip():
             flash("Name must contain only alphabetic characters", category="error")
-            return redirect(url_for('sign_up'))
+            return redirect(url_for('auth.sign_up'))
         elif len(name) < 3:
             flash("Name must be at least 3 characters long", category="error")
             return redirect(url_for('auth.sign_up'))
@@ -94,7 +94,7 @@ def sign_up():
             referral = User.query.filter_by(username=referral_username).first()
             if not referral:
                 flash("Referral username doesn't exist!", category="info")
-                return redirect(url_for('auth.sign_up'))
+                # return redirect(url_for('auth.sign_up'))
 
             referral_username = referral_username
 
@@ -180,15 +180,16 @@ def reset_password():
         username = request.form.get('username_or_email')
         session['username'] = username
 
-        if not username:
-            flash('enter your username or email', category='error')
-            return redirect(url_for('auth.find_account'))
-
         user_by_email = User.query.filter_by(email=username).first()
         user_by_username = User.query.filter_by(username=username).first()
 
+
+        if not username:
+            flash('enter your username or email', category='error')
+            return redirect(url_for('auth.reset_password'))
+
         # first form to find the account using email or username then request for otp
-        if 'username_form_submit' in request.form:
+        if 'username_submit_btn' in request.form:
             if user_by_email:
                 otp = generate_otp(5)  # generate otp
                 session['otp'] = otp  # save it to session
@@ -201,24 +202,23 @@ def reset_password():
                 flash('otp sent to your email', category='success')
             elif not user_by_username:
                 flash("account with this username doesn't exist", category='error')
-                return redirect(url_for('auth.find_account'))
+                return redirect(url_for('auth.reset_password'))
             elif not user_by_email:
                 flash("account with this email doesn't exist", category='error')
-                return redirect(url_for('auth.find_account'))
+                return redirect(url_for('auth.reset_password'))
 
-        # second form to enter the requested otp
-        elif 'otp_form_submit' in request.form:
             user_otp = request.form.get('otp')
             session['user_otp'] = user_otp
+
             if verify_otp(user_otp):
                 flash('otp verified', category='success')
-                return redirect(url_for('auth.create_new_password'))
+                return redirect(url_for('auth.reset_password'))
             else:
                 flash('invalid otp', category='error')
-                return redirect(url_for('auth.find_account'))
+                return redirect(url_for('auth.reset_password'))
 
         # third form to reset the password
-        elif 'password_form_submit' in request.form:
+        elif 'password_submit_btn' in request.form:
             password1 = request.form.get('password1')
             password2 = request.form.get('password2')
             if password1 == password2:
@@ -240,6 +240,7 @@ def reset_password():
                     return redirect(url_for('auth.login'))
             else:
                     flash('Passwords do not match', category="error")
+                    return redirect(url_for('auth.reset_password'))
 
     return render_template("auth_templates/reset_password.html")
 
@@ -261,35 +262,39 @@ def change_password():
 
         if new_password1 != new_password2:
             flash('New passwords do not match', category='error')
+            return redirect(url_for('auth.change_password'))
 
         user.change_password(user_old_password, new_password2)
         flash('Password changed successfully', category='success')
         return redirect(url_for('auth.login'))
 
+    return render_template("auth_templates/change_password.html")
 
- # 6 change password route (if already login)
-# @auth.route("/change-password", methods=['POST', 'GET'])
-# @login_required
-# def change_password():
-#     if request.method == 'POST':
-#         user = current_user()
-#         old_pin = request.form.get('old_pin')
-#         new_pin_1 = request.form.get('new_pin1')
-#         new_pin_2 = request.form.get('new_pin2')
-#
-#         session['old_pin'] = old_pin
-#         session['new_pin_1'] = new_pin_1
-#         session['new_pin_2'] = new_pin_2
-#
-#         if user.pin != old_pin:
-#             flash('Incorrect old pin', category='error')
-#             return redirect(url_for('auth.change_pin'))
-#
-#         if new_pin_1 != new_pin_2:
-#             flash('New PINs do not match', category='error')
-#             return redirect(url_for('auth.change_pin'))
-#
-#         user.change_pin(old_pin, new_pin_2)
-#         flash('PIN changed successfully', category='success')
-#         return redirect(url_for('auth.login'))
-#
+
+ # 6 change pin route
+@auth.route("/change-pin", methods=['POST', 'GET'])
+@login_required
+def change_pin():
+    if request.method == 'POST':
+        user = current_user()
+        old_pin = request.form.get('old_pin')
+        new_pin_1 = request.form.get('new_pin1')
+        new_pin_2 = request.form.get('new_pin2')
+
+        session['old_pin'] = old_pin
+        session['new_pin_1'] = new_pin_1
+        session['new_pin_2'] = new_pin_2
+
+        if user.pin != old_pin:
+            flash('Incorrect old pin', category='error')
+            return redirect(url_for('auth.change_pin'))
+
+        if new_pin_1 != new_pin_2:
+            flash('New PINs do not match', category='error')
+            return redirect(url_for('auth.change_pin'))
+
+        user.change_pin(old_pin, new_pin_2)
+        flash('PIN changed successfully', category='success')
+        return redirect(url_for('auth.login'))
+    
+    return render_template("auth_templates/change_pin.html")

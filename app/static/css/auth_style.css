@@ -1,6 +1,6 @@
 /* constant required css reset */
     body {
-        background-color: #344a72;
+        background-color: #fff;
         box-sizing: border-box;
         font-family: 'Roboto', sans-serif;
         height: 100vh;
@@ -23,7 +23,7 @@
 
      /* 1. pre auth view */
         .pre-auth-wrapper {
-            background-color: #f7fff7;
+            background-color: #fff;
             display: flex;
             min-height: 100vh;
             justify-content: center;
@@ -91,7 +91,7 @@
             width: 200px;
         }
         .pre-auth-sign-up-btn {
-            background-color: #4CAF50;
+            background-color: #256D85;
             box-shadow: 0 4px 8px #797878;
             color: #fff;
         }
@@ -99,7 +99,7 @@
         .pre-auth-login-btn {
             background-color: #ffffff;
             box-shadow: 0 4px 8px #797878;
-            color: #4CAF50;
+            color: #256D85;
         }
     /* end of pre-auth view */
 
@@ -107,7 +107,7 @@
     /* 2. login view together with sign up view */
         /* to be served */
         .auth-wrapper {
-            background-color: #344a72;
+            background-color: #fff;
             height: 100%;
             padding: 30px 0 30px 0;
             width: 100%;
@@ -123,7 +123,7 @@
             justify-content: center;
             height: 100%;
             margin: auto;
-            width: 50%;
+            width: 70%;
         }
 
         /* to be served */
@@ -133,9 +133,10 @@
 
         /* to be served */
         .auth-heading {
-            margin: 15px 0 -10px 0;
+            color: #256D85;
+            /* margin: 15px 0 -10px 0; */
             text-align: center;
-            width: 70%;
+            width: 100%;
         }
         
         /* to be served */
@@ -143,27 +144,50 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            width: 80%;
+            gap: 5px;
+            width: 90%;
            
         }
-        /* to be served */
-        .auth-form > label {
+        
+        .input-container {
             display: flex;
-            font-size: 18px;
-            margin-top: 20px;
-            
+            align-items: center;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            gap: 10px;
+            padding: 5px;
+            background-color: #256D854D;
+            width: 100%;
         }
+
+        .input-container:hover {
+            border-color: #256D85;
+            cursor: pointer;
+        }
+
         /* to be served */
-        .auth-form > input {
+        .input-container input {
             background-color: transparent;
             border: none;
-            border: 1px solid gray;
-            border-radius: 15px;
-            box-sizing: border-box;
+            outline: none;
+            color: #256D85;
+            flex-grow: 1;
             font-size: 16px;
             margin-top: 10px;
-            padding: 15px 30px 15px 15px;
+            padding: 5px;
+            height: 100%;
             width: 100%;
+        }
+
+
+        .input-container i {
+            margin-left: 10px;
+            font-size: 18px;
+          }
+
+
+        .input-container input::placeholder {
+            color: #256D85;
         }
 
         /* to be served */
@@ -178,7 +202,7 @@
 
         /* to be served */ 
         .submit-btn {
-            background-color: #4CAF50;
+            background-color: #256D85;
             border: none;
             border-radius: 15px;
             color: white;
@@ -186,22 +210,39 @@
             font-weight: 600;
             padding: 10px 15px;
             outline: none;
-            width: 40%;
+            width: 30%;
         }
 
         .terms {
             font-size: 15px;
             text-align: center;
+            width: 100%;
         }
 
         .have-account {
             font-size: 17px;
+            color: #256D85;
             text-align: center;
         }
-        .terms > a,  .have-account > a {
-            color: #055af8;
-            text-decoration: none;
+        .term {
+            color: #256D85;
+            font-weight: 700;
+            /* text-decoration: none; */
         }
+        .get-code-btn{
+
+            padding-top: 6px;
+            padding-bottom: 6px;
+            outline: none;
+            color: #256D85;
+            border: none;
+            border-radius: 10px;
+            background-color: transparent;
+            height: 90%;
+            width: 50%;
+        }
+
+     
 
     /* end of login and sign up views*/
 

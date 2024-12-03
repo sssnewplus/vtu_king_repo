@@ -6,20 +6,29 @@
 
 {% block content %}
     <div class="auth-wrapper">
+        <button class="get-back-btn" name="username_submit_btn">
+            <i class="fas fa-arrow" style="color: #06283D; font-size: 24px;"></i>
+            back
+        </button>
         <div class="auth-box">
             <!-- <img src="{{ url_for('static', filename='images/auth_images/icon.png')}}" class="login-icon"> -->
-            <h1 class="auth-heading"><strong>Login</strong></h1>
+            <h1 class="auth-heading"><strong>Welcome back!</strong></h1>
+            <p class="have-account">Log in to your account</p>
             <br>
             <form class="auth-form" method="post">
-                <label for="username">Username Or Email</label>
-                <input type="text" placeholder="enter your username or email" id="username" name="username_or_email">
-                <label for="password1">Password</label>
-                <input type="password" placeholder="Password" id="password" name="password">
+                <div class="input-container">
+                    <i class="fas fa-user" style="color: #06283D; font-size: 24px;"></i>
+                    <input type="text" class="input" placeholder="Username Or Email" id="username" name="username_or_email">
+                </div>
+                <div class="input-container">
+                    <i class="fas fa-lock" style="color: #06283D; font-size: 24px;"></i>
+                    <input type="password" class="input" placeholder="Password" id="password" name="password">
+                </div>
                 <div class="submit-container">
                     <button type="submit" class="submit-btn">Login</button>
                 </div>
                 <div>
-                    <p class="have-account"><a class="term" href="/find-account">Forgot Password</a></p>
+                    <p class="have-account"><a class="term" href="/reset-password">Forget Password</a></p>
                     <p class="have-account">You don't have account? <a class="term" href="/sign-up">Sign Up</a></p>
                 </div>
                 </form>   

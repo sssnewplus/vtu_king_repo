@@ -3,8 +3,6 @@ import time
 from .models import User
 
 
-
-
 # financial services
 # api call func to create wallet
 def create_wallet(user_id, name, phone_number, email):
