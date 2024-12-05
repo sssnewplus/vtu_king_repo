@@ -2,7 +2,7 @@
     body {
         background-color: #fff;
         box-sizing: border-box;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Poppins';
         height: 100vh;
         margin: 0;
         padding: 0;
@@ -52,17 +52,20 @@
             width: 100px;
         }
         .pre-auth-heading {
+            color: #256D85;
             font-size: 1.5rem;
             font-weight: 300;
             margin-top: 10px;
         }
         .pre-auth-brand {
+            color: #256D85;
             font-size: 2rem;
             font-weight: bolder;
             margin-top: -10px;
             text-align: center;
         }
         .pre-auth-paragraph {
+            color: #256D85;
             font-size: 1.2rem;
             margin-top: 20px;
             text-align: center;
@@ -134,7 +137,6 @@
         /* to be served */
         .auth-heading {
             color: #256D85;
-            /* margin: 15px 0 -10px 0; */
             text-align: center;
             width: 100%;
         }
@@ -146,7 +148,6 @@
             justify-content: center;
             gap: 5px;
             width: 90%;
-           
         }
         
         .input-container {
@@ -236,11 +237,27 @@
             outline: none;
             color: #256D85;
             border: none;
-            border-radius: 10px;
+            /* border-radius: 10px; */
             background-color: transparent;
             height: 90%;
             width: 50%;
         }
+
+        .back-btn-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+        }
+        .get-back-btn {
+            margin-top: 0;
+            margin-bottom: 0;
+            outline: none;
+            color: #06283D;
+            font-size: 24px;
+            border: none;
+            background-color: transparent;
+        }
+
 
      
 

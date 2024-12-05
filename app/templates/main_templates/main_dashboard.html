@@ -1,420 +1,353 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Document</title>
-</head>
-
-<!-- dashboard styling  -->
-<style>
-    /* body reset */
-    body {
-        background: #f4f4f4;
-        /* background-color: #c7f0e3; */
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding-top: 50px;
-    }
-    /* top navbar */
-    .top-navbar {
-        border-bottom: solid #333 1px;
-        background: #256D85;
-        color: #fff;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-    }
-    /* navbar-container-fluid */
-    .container-fluid {
-        align-items: center;
-        /* border: red solid 1px; */
-        display: flex;
-        justify-content: center;
-        margin: 0 auto;
-        width: 95%;
-        height: 100%;
-    }
-
-    /* right navbar container */
-    .navbar-right {
-        /* border: red solid 1px; */
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 5px;
-        width: 75%;
-    }
-    /* image container */
-    .nav-image {
-        /* border: red solid 1px; */
-        height: 55px;
-        padding: 5px;
-        width: 55px;
-    }
-    /* nav image */
-    .nav-image > img {
-        border-radius: 50%;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
-        height: 100%;
-        width: 100%;
-    }
-    .nav-welcome {
-        /* border: red solid 1px; */
-        height: 70px;
-        justify-content: end;
-    }
-    .nav-welcome > p {
-        /* border: red solid 1px; */
-        font-size: 1em;
-        padding-left: 5px;
-    }
-     /* username */
-     .user {
-        font-weight: bold;
-    }
-    /* left navbar container */
-    .navbar-left {
-        /* border: red solid 1px; */
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        justify-content: flex-end;
-        padding-top: 15px;
-        padding-right: 10px;
-        width: 25%;
-    }
-    /* navbar icons at left */
-    .notification, .contact {
-        /* border: red solid 1px; */
-        text-align: center;
-        height: 50px;
-    }
-    /* banner grand parent container */
-    .banner-container {
-        /* border: #333 solid 2px; */
-        display: flex;
-        justify-content: center;
-        margin-top: 50px;
-        width: 100%;
-    }
-    /*banner parent container  */
-    .banner {
-        /* border: #333 solid 2px; */
-        background: #256d854d;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
-        flex-direction: column;
-        display: flex;
-        height: 100%;
-        width: 80%;
-    }
-    /* banner child container (banner1) */
-    .banner-1 {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    .balance-text, .trxn > p {
-        padding: 0px 20px;
-        }
-    .assets > p {
-        font-size: small;
-        margin: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-    .fund {
-        margin-bottom: 10px;
-    }
-    .fund, .balance-text, .trxn, .assets {
-        font-size: 12px;
-        padding: 0px 15px;
-        text-align: center;
-    }
-    .fund > button {
-        background-color: #256D85;
-        border: none;
-        border-radius: 8px;
-        color: white;
-        cursor: pointer;
-        display: inline-block;
-        font-size: 16px;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-    }
-    /* banner child container (banner2) */
-    .banner-2 {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
+{% extends 'main_templates/main_base.html' %}
+{% block title %}
+    Dashboard
+{% endblock %}
 
 
-    /* first container section */
-    .first-container {
-        margin: 0 auto;
-        padding: 10px;
-        width: 80%;
-    }
-    /*first heading */
-    .header1 {
-        margin-bottom: 15px;
-        text-align: left;
-    }
-    .header1 > h2 {
-        font-size: 18px;
-    }
-    /* grid container */
-    .grid-container {
-        display: grid;
-        gap: 20px;
-        grid-template-columns: repeat(3, 1fr);
-        width: 100%;
-    }
-    /* each grid item  container*/
-    .grid-item {    
-        background: #256d854d;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
-        text-align: center;
-        width: 100%;
-        height: 100%;
-    }
-    /* icons in the grid */
-    .grid-icon {
-        color: #256D85;   
-        font-size: 40px;
-    }
-    /* text underneath the icon */
-    .grid-text {
-        font-size: 16px;
-        color: #fff;
-        margin-top: 10px;
-    }
-    
-    /* if screen is large */
-    @media only screen and (min-width:1000px){
-        .container-fluid{
-            width: 80%;
-        }
-        .first-container {
-            width: 50%;
-        }
-        .banner {
-            width: 50%;
-        }
-    }
-    /* bottom navbar */
-    .bottom-navbar {
-        border-top: solid #333 1px;
-        bottom: 0;
-        height: auto;
-        position: fixed;
-        width: 100%;
-        z-index: 1000;
-    }
-    /* bottom navbar ul */
-    .bottom-navbar-container {
-        display: flex;
-        justify-content: space-around;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-    }
-    /* buttom navbar list */
-    .bottom-navbar-list {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        display: inline-block;
-    } 
-    /* each bottom navbar icon 
-    /* .bottom-navbar-icons {
-        /* display: block; 
-
-    } */
-
-</style>
-<!-- end of styling -->
-
-
+{% block content %}
 <body>
     <!-- top navbar -->
     <nav class="top-navbar">
-        <div class="container-fluid">
+        <div class="nav-container-fluid">
             <div class="navbar-right">
-                <div class="nav-image">
-                    <img src="{{ url_for('static', filename='image.jpg')}}" alt="">
-                </div>
-                <div class="nav-welcome">
-                    <p><span class="user">Hi user </span><br> Welcome, let's top up</p>
+                <div class="nav-icon">
+                    <i class="fas fa-bars" style="color: #fff; font-size: 24px;"></i>
                 </div>
             </div>
+            <div class="navbar-center">
+                <div class="nav-brand">
+                    <img height="50" src="{{ url_for('static', filename='images/other_images/whitelogo.png')}}" alt="whitelogo">
+                </div>
+            </div>
+            <div class="invisible-nav">
+                <ul class="bottom-navbar-container">
+                    <li class="bottom-navbar-list"><a href="#">Home</a></li>
+                    <li class="bottom-navbar-list"><a href="#">Services</a></li>
+                    <li class="bottom-navbar-list"><a href="#">Profile</a></li>
+                    <li class="bottom-navbar-list"><a href="#">Setting</a></li>
+                    <li class="bottom-navbar-list"><a href="#">History</a></li>
+                </ul>
+            </div>
             <div  class="navbar-left">
-               <div class="contact">
-                <i class="fas fa-headset" style="font-size: 16px;"></i>
-               </div>
                <div class="notification">
-                <i class="far fa-bell" style="font-size: 16px;"></i>
+                <i class="far fa-bell" style="color: #fff; font-size: 24px;"></i>
                </div>
             </div>
         </div>
     </nav>
     <!-- end of top navbar -->
-     
 
-    <!-- banner container -->
-     <div class="banner-container">
-        <div class="banner">
-            <div class="banner-1">
-                <div class="balance-text">
-                    <p>Balance <span><i class="fas fa-eye-slash"></i></span></p>
-                </div>
-                <div class="trxn">
-                    <p>Transactions <span><i class="fas fa-chevron-down"></i></span></p>
-                </div>
-            </div>
-            <div class="banner-2">
-                <div class="assets">
-                    <p>********</p>
-                </div>
-                <div class="fund">
-                    <button type="button">
-                        Add Money
-                    </button>
-                </div>
-            </div>
-            <!-- <div>
-                <div>
+    <div class="main-container">
 
+        <!-- side navbar -->
+        <div class="left-side-navbar">
+            <div class="side-navbar-container">
+                <div class="side-nav-item">
+                    <i class="fas fa-th" style="color: #fff; font-size: 16px;"></i>
+                    <a href="#" style="color: #fff; font-size: 16px;">Dashboard</a>
                 </div>
-            </div> -->
-        </div>
-     </div>
-    <!-- end of banner container -->
+                <div class="side-nav-item">
+                    <i class="fas fa-wallet" style="color: #fff; font-size: 16px;"></i>
+                    <a href="#" style="color: #fff; font-size: 16px;">Fund Wallet</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fa-regular fa-user" style="color: #fff; font-size: 16px;"></i>
+                    <a href="#" style="color: #fff; font-size: 16px;">Account</a>
+                </div>
+                <!-- <h2 style="font-size: 10; color: #fff; text-align: left;">Services</h2> -->
+                <div class="side-nav-item">
+                    <i class="fas fa-mobile-alt" style="color: #fff; font-size: 16px;"></i>
+                    <a href="#" style="color: #fff; font-size: 16px;">Buy Airtime</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-signal" style="color: #fff; font-size: 16px;"></i>
+                    <a href="#" style="color: #fff; font-size: 16px;">Buy Data</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-plug" style="color: #fff; font-size: 16px;"></i>
+                    <a href="#" style="color: #fff; font-size: 16px;">Electricity Payment</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-graduation-cap" style="color: #fff; font-size: 16px;"></i>
+                    <a href="#" style="color: #fff; font-size: 16px;">Buy Exam Token</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-tv" style="color: #fff; font-size: 16px;"></i>
+                    <a href="#" style="color: #fff; font-size: 16px;">TV Subscription</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-plane" style="color: #fff; font-size: 16px;"></i>
+                    <a href="#" style="color: #fff; font-size: 16px;">Travelling Agencies</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-file-invoice-dollar" style="color: #fff; font-size: 16px;"></i>
+                    <a href="#" style="color: #fff; font-size: 16px;">Invoice Payment</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-bus" style="color: #fff; font-size: 16px;"></i>
+                    <a href="#" style="color: #fff; font-size: 16px;">Transportation</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-shopping-cart" style="color: #fff; font-size: 16px;"></i>
+                    <a href="#" style="color: #fff; font-size: 16px;">Online Shopping</a>
+                </div>
+                <div class="side-nav-item-drop">
+                    <div class="side-nav-item">
+                        <i class="fas fa-bus" style="color: #fff; font-size: 16px;"></i>
+                        <a href="#" style="color: #fff; font-size: 16px;">History</a>
+                        <i class="fas fa-chevron-down" style="color: #fff; font-size: 16px;"></i>
+                    </div>
+                    <div class="side-nav-item">
+                        <i class="fas fa-shopping-cart" style="color: #fff; font-size: 16px;"></i>
+                        <a href="#" style="color: #fff; font-size: 16px;">Settings</a>
+                        <i class="fas fa-chevron-down" style="color: #fff; font-size: 16px;"></i>
+                    </div>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-power-off" style="color: red; font-size: 16px;"></i>
+                    <a href="#" style="color: #fff; font-size: 16px;">Log Out</a>
+                </div>
 
-    <!-- first container, grid container (services) -->
-    <div class="first-container">
-        <div class="header1">
-            <h2>Services</h2>
-        </div>
-        <div class="grid-container">
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <i class="fas fa-tasks" style="color: #06283D; font-size: 24px;"></i>
-                </div>
-                <div class="grid-text">
-                    Airtime
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <i class="fas fa-tasks" style="color: #06283D; font-size: 24px;"></i>
-                </div>
-                <div class="grid-text">
-                    Data Bundles
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <i class="fas fa-tasks" style="color: #06283D; font-size: 24px;"></i>
-                </div>
-                <div class="grid-text">
-                    Electricity
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <i class="fas fa-tasks" style="color: #06283D; font-size: 24px;"></i>
-                </div>
-                <div class="grid-text">
-                    School & Exam
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <i class="fas fa-tasks" style="color: #06283D; font-size: 24px;"></i>
-                </div>
-                <div class="grid-text">
-                    TV
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <i class="fas fa-tasks" style="color: #06283D; font-size: 24px;"></i>
-                </div>
-                <div class="grid-text">
-                    Travel & Hotels
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <i class="fas fa-tasks" style="color: #06283D; font-size: 24px;"></i>
-                </div>
-                <div class="grid-text">
-                    Invoice Payments
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <i class="fas fa-tasks" style="color: #06283D; font-size: 24px;"></i>
-                </div>
-                <div class="grid-text">
-                    Transport & Toll
-                </div>
-            </div>
-            <div class="grid-item">
-                <div class="grid-icon">
-                    <i class="fas fa-tasks" style="color: #06283D; font-size: 24px;"></i>
-                </div>
-                <div class="grid-text">
-                    Online Shopping
-                </div>
             </div>
         </div>
+        <!-- end of side navbar -->
+
+
+    <div class="main-section">
+        <!-- welcome header -->
+        <div class="welcome-header">
+            <h2>Welcome sssnew!</h2>
+        </div>
+        <!-- end of welcome header -->
+        
+    
+        <!-- banner container -->
+        <div class="banner-container">
+            <div class="banner">
+                <div class="banner-left">
+                    <div class="balance-text">
+                        <p>Balance <span><i class="fas fa-eye-slash"></i></span></p>
+                    </div>
+                    <div class="assets">
+                        <p>********</p>
+                    </div>
+                </div>
+                <div class="banner-center">
+                    <img height="170" src="{{ url_for('static', filename='images/other_images/exchange.jpeg')}}" alt="bannerlogo">
+                </div>
+                <div class="banner-right">
+                    <div class="trxn">
+                        <p>Transactions <span><i class="fas fa-chevron-down"></i></span></p>
+                    </div>
+                    <div class="fund">
+                        <button type="button">
+                            Add Money
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of banner container -->
+    
+        <!-- account details container -->
+        <div class="container">
+            <div class="header">
+                <h2>Account Details</h2>
+            </div>
+            <div class="acc-details-container-fluid">
+                <div class="account-details-container">
+                    <p class="acc-details-text">Account Number:</p>
+                    <p class="acc-details-text">Bank Name:</p>
+                    <p class="acc-details-text">Account Name:</p>
+                </div>
+                <div class="account-details-container">
+                    <p class="acc-details-text">******67 <i class="fas fa-copy" style="color: #256d85; font-size: 24px;"></i>
+                    </p>
+                    <p class="acc-details-text">Opay</p>
+                    <p class="acc-details-text">Habibu Danlami</p>
+                </div>  
+                <div class="between-acc-details">
+                    <p class="acc-details-text">Opay</p>
+                </div>  
+            </div>
+        </div>
+        <!-- end of account details container -->
+    
+        <!--container, grid container (services) -->
+        <div class="container">
+            <div class="header">
+                <h2>Services</h2>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <div class="grid-icon">
+                        <i class="fas fa-mobile-alt" style="color: #256d85; font-size: 24px;"></i>
+                    </div>
+                    <div class="grid-text">
+                        Airtime
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="grid-icon">
+                        <i class="fas fa-signal" style="color: #256d85; font-size: 24px;"></i>
+                    </div>
+                    <div class="grid-text">
+                        Data
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="grid-icon">
+                        <i class="fas fa-plug" style="color: #256d85; font-size: 24px;"></i>
+                    </div>
+                    <div class="grid-text">
+                        Electricity
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="grid-icon">
+                        <i class="fas fa-graduation-cap" style="color: #256d85; font-size: 24px;"></i>
+                    </div>
+                    <div class="grid-text">
+                        Exam
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="grid-icon">
+                        <i class="fas fa-tv" style="color: #256d85; font-size: 24px;"></i>
+                    </div>
+                    <div class="grid-text">
+                        TV
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="grid-icon">
+                        <i class="fas fa-plane" style="color: #256d85; font-size: 24px;"></i>
+                    </div>
+                    <div class="grid-text">
+                        Travel
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="grid-icon">
+                        <i class="fas fa-file-invoice-dollar" style="color: #256d85; font-size: 24px;"></i>
+                    </div>
+                    <div class="grid-text">
+                        Invoice
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="grid-icon">
+                        <i class="fas fa-bus" style="color: #256d85; font-size: 24px;"></i>
+                    </div>
+                    <div class="grid-text">
+                        Transport
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="grid-icon">
+                        <i class="fas fa-shopping-cart" style="color: #256d85; font-size: 24px;"></i>
+                    </div>
+                    <div class="grid-text">
+                        Shopping
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of grid container -->
+    
+        <!-- referrals container -->
+        <div class="container">
+            <div class="header">
+                <h2>Referrals</h2>
+            </div>
+            <div class="acc-details-container-fluid">
+                <div class="account-details-container">
+                    <p class="acc-details-text">Total Earned: &#8358;****</p>
+                    <div class="fund">
+                        <button type="button">
+                            Withdraw
+                        </button>
+                    </div>
+                </div> 
+                <div class="account-details-container">
+                    <p class="acc-details-text">Total Referrals: 30</p>
+                    <p class="acc-details-text"> <a href="#">Refer & Earn</a></p>
+                </div>    
+            </div>
+        </div>
+        <!-- end of referral container -->
+    
+        <!-- history container -->
+        <div class="container">
+            <div class="header">
+                <h2>Transaction History</h2>
+            </div>
+            <div class="acc-details-container-fluid">
+                <div class="account-details-container">
+                    <div class="fund">
+                        <button type="button">
+                            Orders
+                        </button>
+                    </div>
+                </div> 
+                <div class="account-details-container">
+                    <div class="fund">
+                        <button type="button">
+                            Transaction
+                        </button>
+                    </div>
+                </div>    
+            </div>
+        </div>
+        <!-- end of transaction container -->
     </div>
-    <!-- end of grid container -->
 
-    <!-- bottom navbar -->
-    <nav class="bottom-navbar">
-        <div class="container-fluid">
-            <ul class="bottom-navbar-container">
-                <li class="bottom-navbar-list">
-                    <div class="bottom-navbar-icons">
-                        <i class="fas fa-tasks" style="color: #06283D; font-size: 24px;"></i>
-                    </div>
-                </li>
-                <li class="bottom-navbar-list">
-                    <div class="bottom-navbar-icons">
-                        <i class="fas fa-cogs" style="color: #06283D; font-size: 24px;"></i>
-                    </div>
-                </li>
-                <li class="bottom-navbar-list">
-                    <div class="bottom-navbar-icons">
-                        <i class="fas fa-house" style="color: #06283D; font-size: 24px;"></i>
-                    </div>
-                </li>
-                <li class="bottom-navbar-list">
-                    <div class="bottom-navbar-icons">
-                        <!-- <i class="fas fa-hammer" style="color: #28a745; font-size: 24px;"></i> -->
-                        <i class="fas fa-history" style="color: #06283D; font-size: 24px;"></i>
+    <div class="right-side">
+       <div class="right-side-1">
 
+       </div>
+       <div class="right-side-2">
+        
+       </div>
+    </div>
+    <!-- end of side navbar -->
+        
 
-                    </div>
-                </li>
-                <li class="bottom-navbar-list">
-                    <div class="bottom-navbar-icons">
-                        <i class="fas fa-user-alt" style="color: #06283D; font-size: 24px;"></i>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <!-- end of bottom navbar -->
-</body>
-</html>
+     <!-- bottom navbar -->
+     <nav class="bottom-navbar">
+         <div class="nav-container-fluid">
+             <ul class="bottom-navbar-container">
+                 <li class="bottom-navbar-list">
+                     <div class="bottom-navbar-icons">
+                         <i class="fas fa-tasks" style="color: #256d85; font-size: 24px;"></i>
+                     </div>
+                 </li>
+                 <li class="bottom-navbar-list">
+                     <div class="bottom-navbar-icons">
+                         <i class="fas fa-cogs" style="color: #256d85; font-size: 24px;"></i>
+                     </div>
+                 </li>
+                 <li class="bottom-navbar-list">
+                     <div class="bottom-navbar-icons">
+                         <i class="fas fa-house" style="color: #256d85; font-size: 24px;"></i>
+                     </div>
+                 </li>
+                 <li class="bottom-navbar-list">
+                     <div class="bottom-navbar-icons">
+                         <!-- <i class="fas fa-hammer" style="color: #28a745; font-size: 24px;"></i> -->
+                         <i class="fas fa-history" style="color: #256d85; font-size: 24px;"></i>
+ 
+ 
+                     </div>
+                 </li>
+                 <li class="bottom-navbar-list">
+                     <div class="bottom-navbar-icons">
+                         <i class="fas fa-user-alt" style="color: #256d85; font-size: 24px;"></i>
+                     </div>
+                 </li>
+             </ul>
+         </div>
+     </nav>
+     <!-- end of bottom navbar -->
+    </div>
+{% endblock %}

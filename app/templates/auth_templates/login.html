@@ -6,11 +6,12 @@
 
 {% block content %}
     <div class="auth-wrapper">
-        <button class="get-back-btn" name="username_submit_btn">
-            <i class="fas fa-arrow" style="color: #06283D; font-size: 24px;"></i>
-            back
-        </button>
         <div class="auth-box">
+            <div class="back-btn-container">
+                <button class="get-back-btn" name="username_submit_btn">
+                    <i class="fas fa-chevron-left" style="color: #256D85; font-size: 24px;"></i>
+                </button>
+            </div>
             <!-- <img src="{{ url_for('static', filename='images/auth_images/icon.png')}}" class="login-icon"> -->
             <h1 class="auth-heading"><strong>Welcome back!</strong></h1>
             <p class="have-account">Log in to your account</p>
