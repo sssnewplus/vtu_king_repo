@@ -9,9 +9,21 @@ from .services import create_wallet_with_retries
 # blueprint definition
 auth = Blueprint("auth", __name__)
 
+# welcome route
+@auth.route("/", methods=['POST', 'GET'])
+def welcome():
+    # username = session['username']
+    # user = User.query.filter_by(username=username)
+    # if username:
+    #     if user:
+    #         return render_template("auth_templates/welcome.html")
+    #     return redirect(url_for('auth.login'))
+    return render_template("auth_templates/welcome.html")
+
+
 # six authentication routes
 # 1 pre authentication route
-@auth.route("/")
+@auth.route("/pre-auth", methods=['POST', 'GET'])
 def pre_auth():
     return render_template("auth_templates/pre_auth.html")
 

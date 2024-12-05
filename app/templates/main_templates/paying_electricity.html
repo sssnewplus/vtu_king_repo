@@ -1,6 +1,6 @@
 {% extends 'auth_templates/auth_base.html' %}
 {% block title %}
-    TV Subscription
+    Paying Electricity
 {% endblock %}
 
 {% block content %}
@@ -10,34 +10,30 @@
             <button class="get-back-btn" name="username_submit_btn">
                 <i class="fas fa-chevron-left" style="color: #256D85; font-size: 24px;"></i>
             </button>
-            <h2 class="auth-heading"><strong>TV Subscription</strong></h2>
+            <h2 class="auth-heading"><strong>Electricity Payment</strong></h2>
         </div>
         <!-- <img src="{{ url_for('static', filename='images/auth_images/icon.png')}}" class="login-icon"> -->
         <p class="have-account">....</p>
         <br>
         <form class="auth-form" method="post">
             <div class="input-container">
-                <input type="text" class="text" placeholder="Select company" id="tv_company" name="tv_company">
+                <input type="text" class="input" placeholder="Disco name" id="disco_name" name="disco_name">
                 <i class="fas fa-chevron-down" style="color: #256D85; font-size: 24px;"></i>
             </div>
             <div class="input-container">
-                <input type="text" class="input" placeholder="Name" id="tv_name" name="tv_name">
-                <i class="fas fa-chevron-down" style="color: #256D85; font-size: 24px;"></i>
-            </div>
-            <div class="input-container">
-                <input type="text" class="input" placeholder="Plans" id="tv_plan" name="tv_plan">
+                <input type="text" class="input" placeholder="Meter type" id="meter_type" name="meter_type">
                 <i class="fas fa-chevron-down" style="color: #256D85; font-size: 24px;"></i>
             </div>
             <div class="input-container">
                 <!-- <i class="fas fa-lock" style="color: #06283D; font-size: 24px;"></i> -->
-                <input type="text" class="input" placeholder="Smart card number" id="tv_card_number" name="tv_card_number">
+                <input type="text" class="input" placeholder="Name" id="name" name="name">
             </div>
             <div class="input-container">
                 <!-- <i class="fas fa-lock" style="color: #06283D; font-size: 24px;"></i> -->
-                <input type="text" class="input" placeholder="Amount" id="tv_amount" name="tv_amount">
+                <input type="text" class="input" placeholder="Amount" id="amount" name="amount">
             </div>
             <div class="submit-container">
-                <button type="submit" class="submit-btn">Subscribe</button>
+                <button type="submit" class="submit-btn">Purchase</button>
             </div>
             <!-- <div>
                 <p class="have-account"><a class="term" href="/reset-password">Forget Password</a></p>

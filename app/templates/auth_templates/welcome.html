@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <title>welcome</title>
+
+    <style>
+        body {
+            background-color: #256D85;
+            color: #fff;
+            font-family: 'Poppins';
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 48px;
+            text-align: center;
+        }
+    </style>
+   <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                // Redirect to the home page after 3 seconds
+                window.location.href = "{{ url_for('auth.pre_auth') }}";
+            }, 3000);
+        });
+    </script>
+</head>
+<body> 
+    <div class="img-container">
+        <img height="200" src="{{ url_for('static', filename='images/other_images/start_whitelogo.png')}}" alt="">
+    </div>  
+    <div class="serching-container">
+
+    </div>
+</body>
+</html>
