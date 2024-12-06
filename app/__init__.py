@@ -19,7 +19,7 @@ def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.secret_key = "whatever we wanna trigger"
+    app.secret_key = "whatever we wanna trigger as our secret key"
 
     # init. database
     db.init_app(app)

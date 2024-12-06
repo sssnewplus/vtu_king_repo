@@ -14,7 +14,6 @@ view = Blueprint("view", __name__)
 @login_required
 def dashboard():
     if request.method == 'POST':
-
         # adding fund form
         if 'fund_wallet' in request.form:
             return redirect(url_for( 'funding_wallet'))
@@ -185,3 +184,8 @@ def user_help():
 def notification():
     return render_template("main_templates/notification.html")
 
+# # 12. trans
+# @view.route("/notification")
+# @login_required
+# def notification():
+#     return render_template("main_templates/notification.html")

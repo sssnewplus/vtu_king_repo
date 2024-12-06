@@ -183,6 +183,7 @@ def login():
 @login_required
 def logout():
     logout_user()
+    session.clear()
     return render_template("auth_templates/pre_auth.html")
 
 # 5 password forgotten route (find account, request otp and reset password)

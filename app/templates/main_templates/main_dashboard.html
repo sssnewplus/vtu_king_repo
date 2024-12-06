@@ -3,40 +3,51 @@
     Dashboard
 {% endblock %}
 
-
 {% block content %}
 <body>
     <!-- top navbar -->
     <nav class="top-navbar">
         <div class="nav-container-fluid">
+            <!-- right of the top navbar -->
             <div class="navbar-right">
-                <div class="nav-icon">
+                <div class="nav-icon">  <!-- hamburger icon -->
                     <i class="fas fa-bars" style="color: #fff; font-size: 24px;"></i>
                 </div>
             </div>
+            <!-- end of right of the top navbar -->
+
+            <!-- center of the top navbar -->
             <div class="navbar-center">
-                <div class="nav-brand">
+                <div class="nav-brand">  <!-- logo at the center -->
                     <img height="50" src="{{ url_for('static', filename='images/other_images/whitelogo.png')}}" alt="whitelogo">
                 </div>
             </div>
+            <!-- end of center of the top navbar -->
+
+            <!-- top navbar navigations -->
             <div class="invisible-nav">
                 <ul class="bottom-navbar-container">
-                    <li class="bottom-navbar-list"><a href="#">Home</a></li>
-                    <li class="bottom-navbar-list"><a href="#">Services</a></li>
-                    <li class="bottom-navbar-list"><a href="#">Profile</a></li>
-                    <li class="bottom-navbar-list"><a href="#">Setting</a></li>
-                    <li class="bottom-navbar-list"><a href="#">History</a></li>
+                    <li class="bottom-navbar-list"><a href="{{ url_for('view.dashboard')}}">Home</a></li>
+                    <li class="bottom-navbar-list"><a href="{{ url_for('view.dashboard')}}">Services</a></li>
+                    <li class="bottom-navbar-list"><a href="{{ url_for('view.profile')}}">Profile</a></li>
+                    <li class="bottom-navbar-list"><a href="{{ url_for('view.setting')}}">Setting</a></li>
+                    <li class="bottom-navbar-list"><a href="{{ url_for('view.history')}}">History</a></li>
                 </ul>
             </div>
+            <!-- end of top navbar navigations -->
+
+            <!-- left of the top navbar -->
             <div  class="navbar-left">
                <div class="notification">
-                <i class="far fa-bell" style="color: #fff; font-size: 24px;"></i>
+                    <i class="far fa-bell" style="font-size: 24px;"></i>
                </div>
             </div>
+            <!-- end of left of the top navbar -->
         </div>
     </nav>
     <!-- end of top navbar -->
 
+    <!-- main content -->
     <div class="main-container">
 
         <!-- side navbar -->
@@ -44,44 +55,44 @@
             <div class="side-navbar-container">
                 <div class="side-nav-item">
                     <i class="fas fa-th" style="color: #fff; font-size: 16px;"></i>
-                    <a href="#" style="color: #fff; font-size: 16px;">Dashboard</a>
+                    <a href="{{ url_for('view.dashboard')}}" style="color: #fff; font-size: 16px;">Dashboard</a>
                 </div>
                 <div class="side-nav-item">
                     <i class="fas fa-wallet" style="color: #fff; font-size: 16px;"></i>
-                    <a href="#" style="color: #fff; font-size: 16px;">Fund Wallet</a>
+                    <a href="{{ url_for('view.funding_wallet')}}" style="color: #fff; font-size: 16px;">Fund Wallet</a>
                 </div>
                 <div class="side-nav-item">
                     <i class="fa-regular fa-user" style="color: #fff; font-size: 16px;"></i>
-                    <a href="#" style="color: #fff; font-size: 16px;">Account</a>
+                    <a href="{{ url_for('view.profile')}}" style="color: #fff; font-size: 16px;">Account</a>
                 </div>
                 <!-- <h2 style="font-size: 10; color: #fff; text-align: left;">Services</h2> -->
                 <div class="side-nav-item">
                     <i class="fas fa-mobile-alt" style="color: #fff; font-size: 16px;"></i>
-                    <a href="#" style="color: #fff; font-size: 16px;">Buy Airtime</a>
+                    <a href="{{ url_for('view.buying_airtime')}}" style="color: #fff; font-size: 16px;">Buy Airtime</a>
                 </div>
                 <div class="side-nav-item">
                     <i class="fas fa-signal" style="color: #fff; font-size: 16px;"></i>
-                    <a href="#" style="color: #fff; font-size: 16px;">Buy Data</a>
+                    <a href="{{ url_for('view.buying_data')}}" style="color: #fff; font-size: 16px;">Buy Data</a>
                 </div>
                 <div class="side-nav-item">
                     <i class="fas fa-plug" style="color: #fff; font-size: 16px;"></i>
-                    <a href="#" style="color: #fff; font-size: 16px;">Electricity Payment</a>
+                    <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Electricity Payment</a>
                 </div>
                 <div class="side-nav-item">
                     <i class="fas fa-graduation-cap" style="color: #fff; font-size: 16px;"></i>
-                    <a href="#" style="color: #fff; font-size: 16px;">Buy Exam Token</a>
+                    <a href="{{ url_for('view.generating_exam_token')}}" style="color: #fff; font-size: 16px;">Buy Exam Token</a>
                 </div>
                 <div class="side-nav-item">
                     <i class="fas fa-tv" style="color: #fff; font-size: 16px;"></i>
-                    <a href="#" style="color: #fff; font-size: 16px;">TV Subscription</a>
+                    <a href="{{ url_for('view.subscribing_tv')}}" style="color: #fff; font-size: 16px;">TV Subscription</a>
                 </div>
                 <div class="side-nav-item">
                     <i class="fas fa-plane" style="color: #fff; font-size: 16px;"></i>
-                    <a href="#" style="color: #fff; font-size: 16px;">Travelling Agencies</a>
+                    <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Travelling Agencies</a>
                 </div>
                 <div class="side-nav-item">
                     <i class="fas fa-file-invoice-dollar" style="color: #fff; font-size: 16px;"></i>
-                    <a href="#" style="color: #fff; font-size: 16px;">Invoice Payment</a>
+                    <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Invoice Payment</a>
                 </div>
                 <div class="side-nav-item">
                     <i class="fas fa-bus" style="color: #fff; font-size: 16px;"></i>
@@ -89,272 +100,277 @@
                 </div>
                 <div class="side-nav-item">
                     <i class="fas fa-shopping-cart" style="color: #fff; font-size: 16px;"></i>
-                    <a href="#" style="color: #fff; font-size: 16px;">Online Shopping</a>
+                    <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Online Shopping</a>
                 </div>
                 <div class="side-nav-item-drop">
                     <div class="side-nav-item">
                         <i class="fas fa-bus" style="color: #fff; font-size: 16px;"></i>
-                        <a href="#" style="color: #fff; font-size: 16px;">History</a>
+                        <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">History</a>
                         <i class="fas fa-chevron-down" style="color: #fff; font-size: 16px;"></i>
                     </div>
                     <div class="side-nav-item">
                         <i class="fas fa-shopping-cart" style="color: #fff; font-size: 16px;"></i>
-                        <a href="#" style="color: #fff; font-size: 16px;">Settings</a>
+                        <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Settings</a>
                         <i class="fas fa-chevron-down" style="color: #fff; font-size: 16px;"></i>
                     </div>
                 </div>
                 <div class="side-nav-item">
                     <i class="fas fa-power-off" style="color: red; font-size: 16px;"></i>
-                    <a href="#" style="color: #fff; font-size: 16px;">Log Out</a>
+                    <a href="{{ url_for('auth.logout')}}" style="color: #fff; font-size: 16px;">Log Out</a>
                 </div>
 
             </div>
         </div>
         <!-- end of side navbar -->
 
-
-    <div class="main-section">
-        <!-- welcome header -->
-        <div class="welcome-header">
-            <h2>Welcome sssnew!</h2>
-        </div>
-        <!-- end of welcome header -->
+        <!-- main section (middle section) -->
+        <div class="main-section">
+            
+            <!-- welcome header -->
+            <div class="welcome-header">
+                <h2>Welcome user.username</h2>
+            </div>
+            <!-- end of welcome header -->
         
-    
-        <!-- banner container -->
-        <div class="banner-container">
-            <div class="banner">
-                <div class="banner-left">
-                    <div class="balance-text">
-                        <p>Balance <span><i class="fas fa-eye-slash"></i></span></p>
+            <!-- banner container -->
+            <div class="banner-container">
+                <div class="banner">
+                    <div class="banner-left">
+                        <div class="balance-text">
+                            <p>Balance <span><i class="fas fa-eye-slash"></i></span></p>
+                        </div>
+                        <div class="assets mobile-none">
+                            <p>user.balance</p>
+                        </div>
+                        <div class="trxn pc-none fund">
+                            <button type="button">
+                                Transactions
+                            </button>
+                        </div>
                     </div>
-                    <div class="assets mobile-none">
-                        <p>********</p>
-                    </div>
-                    <div class="trxn pc-none fund">
-                        <button type="button">
-                            Transactions
-                        </button>
-                    </div>
-                </div>
-                <div class="banner-right">
-                    <div class="assets pc-none">
-                        <p>********</p>
-                    </div>
-                    <div class="trxn mobile-none fund">
-                        <button type="button">
-                            Transactions
-                        </button>
-                    </div>
-                    <div class="fund">
-                        <button type="button">
-                            Add Money
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end of banner container -->
-    
-        <!-- account details container -->
-        <div class="container">
-            <div class="header">
-                <h2>Account Details</h2>
-            </div>
-            <div class="acc-details-container-fluid">
-                <div class="account-details-container">
-                    <p class="acc-details-text">Account Number:</p>
-                    <p class="acc-details-text">Bank Name:</p>
-                    <p class="acc-details-text">Account Name:</p>
-                </div>
-                <div class="account-details-container">
-                    <p class="acc-details-text">******67 <i class="fas fa-copy" style="color: #256d85; font-size: 24px;"></i>
-                    </p>
-                    <p class="acc-details-text">Opay</p>
-                    <p class="acc-details-text">Habibu Danlami</p>
-                </div>  
-                <div class="between-acc-details">
-                    <p class="acc-details-text">Opay</p>
-                </div>  
-            </div>
-        </div>
-        <!-- end of account details container -->
-    
-        <!--container, grid container (services) -->
-        <div class="container">
-            <div class="header">
-                <h2>Services</h2>
-            </div>
-            <div class="grid-container">
-                <div class="grid-item">
-                    <div class="grid-icon">
-                        <i class="fas fa-mobile-alt" style="color: #256d85; font-size: 24px;"></i>
-                    </div>
-                    <div class="grid-text">
-                        Airtime
-                    </div>
-                </div>
-                <div class="grid-item">
-                    <div class="grid-icon">
-                        <i class="fas fa-signal" style="color: #256d85; font-size: 24px;"></i>
-                    </div>
-                    <div class="grid-text">
-                        Data
-                    </div>
-                </div>
-                <div class="grid-item">
-                    <div class="grid-icon">
-                        <i class="fas fa-plug" style="color: #256d85; font-size: 24px;"></i>
-                    </div>
-                    <div class="grid-text">
-                        Electricity
-                    </div>
-                </div>
-                <div class="grid-item">
-                    <div class="grid-icon">
-                        <i class="fas fa-graduation-cap" style="color: #256d85; font-size: 24px;"></i>
-                    </div>
-                    <div class="grid-text">
-                        Exam
-                    </div>
-                </div>
-                <div class="grid-item">
-                    <div class="grid-icon">
-                        <i class="fas fa-tv" style="color: #256d85; font-size: 24px;"></i>
-                    </div>
-                    <div class="grid-text">
-                        TV
-                    </div>
-                </div>
-                <div class="grid-item">
-                    <div class="grid-icon">
-                        <i class="fas fa-plane" style="color: #256d85; font-size: 24px;"></i>
-                    </div>
-                    <div class="grid-text">
-                        Travel
-                    </div>
-                </div>
-                <div class="grid-item">
-                    <div class="grid-icon">
-                        <i class="fas fa-file-invoice-dollar" style="color: #256d85; font-size: 24px;"></i>
-                    </div>
-                    <div class="grid-text">
-                        Invoice
-                    </div>
-                </div>
-                <div class="grid-item">
-                    <div class="grid-icon">
-                        <i class="fas fa-bus" style="color: #256d85; font-size: 24px;"></i>
-                    </div>
-                    <div class="grid-text">
-                        Transport
-                    </div>
-                </div>
-                <div class="grid-item">
-                    <div class="grid-icon">
-                        <i class="fas fa-shopping-cart" style="color: #256d85; font-size: 24px;"></i>
-                    </div>
-                    <div class="grid-text">
-                        Shopping
+                    <div class="banner-right">
+                        <div class="assets pc-none">
+                            <p>user.balance</p>
+                        </div>
+                        <div class="trxn mobile-none fund">
+                            <button type="button">
+                                Transactions
+                            </button>
+                        </div>
+                        <div class="fund">
+                            <button type="button">
+                                Add Money
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- end of grid container -->
-    
-        <!-- referrals container -->
-        <div class="container">
-            <div class="header">
-                <h2>Referrals</h2>
-            </div>
-            <div class="acc-details-container-fluid">
-                <div class="account-details-container">
-                    <p class="acc-details-text">Total Earned: &#8358;****</p>
-                    <div class="fund">
-                        <button type="button">
-                            Withdraw
-                        </button>
-                    </div>
-                </div> 
-                <div class="account-details-container">
-                    <p class="acc-details-text">Total Referrals: 30</p>
-                    <p class="acc-details-text"> <a href="#">Refer & Earn</a></p>
-                </div>    
-            </div>
-        </div>
-        <!-- end of referral container -->
-    
-        <!-- history container -->
-        <div class="container">
-            <div class="header">
-                <h2>Transaction History</h2>
-            </div>
-            <div class="acc-details-container-fluid">
-                <div class="account-details-container">
-                    <div class="fund">
-                        <button type="button">
-                            Orders
-                        </button>
-                    </div>
-                </div> 
-                <div class="account-details-container">
-                    <div class="fund">
-                        <button type="button">
-                            Transaction
-                        </button>
-                    </div>
-                </div>    
-            </div>
-        </div>
-        <!-- end of transaction container -->
-    </div>
-
-    <div class="right-side">
-       <div class="right-side-1">
-
-       </div>
-       <div class="right-side-2">
+            <!-- end of banner container -->
         
-       </div>
-    </div>
-    <!-- end of side navbar -->
+            <!-- account details container -->
+            <div class="container">
+                <div class="header">
+                    <h2>Account Details</h2>
+                </div>
+                <div class="acc-details-container-fluid">
+                    <div class="account-details-container">
+                        <p class="acc-details-text">Account Number:</p>
+                        <p class="acc-details-text">Bank Name:</p>
+                        <p class="acc-details-text">Account Name:</p>
+                    </div>
+                    <div class="account-details-container">
+                        <p class="acc-details-text">******67
+                            <i class="fas fa-copy" style="color: #256d85; font-size: 24px;"></i>
+                        </p>
+                        <p class="acc-details-text">Opay</p>
+                        <p class="acc-details-text">Habibu Danlami</p>
+                    </div>  
+                    <div class="between-acc-details">
+                        <p class="acc-details-text">Opay</p>
+                    </div>  
+                </div>
+            </div>
+            <!-- end of account details container -->
         
+            <!--container, grid container (services) -->
+            <div class="container">
+                <div class="header">
+                    <h2>Services</h2>
+                </div>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <div class="grid-icon">
+                            <i class="fas fa-mobile-alt" style="font-size: 24px;"></i>
+                        </div>
+                        <div class="grid-text">
+                            Airtime
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="grid-icon">
+                            <i class="fas fa-signal"></i>
+                        </div>
+                        <div class="grid-text">
+                            Data
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="grid-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <div class="grid-text">
+                            Electricity
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="grid-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="grid-text">
+                            Exam
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="grid-icon">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <div class="grid-text">
+                            TV
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="grid-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <div class="grid-text">
+                            Travel
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="grid-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div class="grid-text">
+                            Invoice
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="grid-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <div class="grid-text">
+                            Transport
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="grid-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="grid-text">
+                            Shopping
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of grid container -->
+        
+            <!-- referrals container -->
+            <div class="container">
+                <div class="header">
+                    <h2>Referrals</h2>
+                </div>
+                <div class="acc-details-container-fluid">
+                    <div class="account-details-container">
+                        <p class="acc-details-text">Total Earned: &#8358;****</p>
+                        <div class="fund">
+                            <button type="button">
+                                Withdraw
+                            </button>
+                        </div>
+                    </div> 
+                    <div class="account-details-container">
+                        <p class="acc-details-text">Total Referrals: 30</p>
+                        <p class="acc-details-text"> <a href="#">Refer & Earn</a></p>
+                    </div>    
+                </div>
+            </div>
+            <!-- end of referral container -->
+        
+            <!-- history container -->
+            <div class="container">
+                <div class="header">
+                    <h2>Transaction History</h2>
+                </div>
+                <div class="acc-details-container-fluid">
+                    <div class="account-details-container">
+                        <div class="fund">
+                            <button type="button">
+                                Orders
+                            </button>
+                        </div>
+                    </div> 
+                    <div class="account-details-container">
+                        <div class="fund">
+                            <button type="button">
+                                Transaction
+                            </button>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            <!-- end of transaction container -->
 
-     <!-- bottom navbar -->
-     <nav class="bottom-navbar">
-         <div class="nav-container-fluid">
-             <ul class="bottom-navbar-container">
-                 <li class="bottom-navbar-list">
-                     <div class="bottom-navbar-icons">
-                         <i class="fas fa-tasks" style="color: #256d85; font-size: 24px;"></i>
-                     </div>
-                 </li>
-                 <li class="bottom-navbar-list">
-                     <div class="bottom-navbar-icons">
-                         <i class="fas fa-cogs" style="color: #256d85; font-size: 24px;"></i>
-                     </div>
-                 </li>
-                 <li class="bottom-navbar-list">
-                     <div class="bottom-navbar-icons">
-                         <i class="fas fa-house" style="color: #256d85; font-size: 24px;"></i>
-                     </div>
-                 </li>
-                 <li class="bottom-navbar-list">
-                     <div class="bottom-navbar-icons">
-                         <!-- <i class="fas fa-hammer" style="color: #28a745; font-size: 24px;"></i> -->
-                         <i class="fas fa-history" style="color: #256d85; font-size: 24px;"></i>
- 
- 
-                     </div>
-                 </li>
-                 <li class="bottom-navbar-list">
-                     <div class="bottom-navbar-icons">
-                         <i class="fas fa-user-alt" style="color: #256d85; font-size: 24px;"></i>
-                     </div>
-                 </li>
-             </ul>
-         </div>
-     </nav>
-     <!-- end of bottom navbar -->
+        </div>
+        <!-- end of main section (middle section) -->
+
+        <!-- right side -->
+        <div class="right-side">
+        <div class="right-side-1">
+
+        </div>
+        <div class="right-side-2">
+            
+        </div>
+        </div>
+        <!-- end of right side-->
+            
+
+        <!-- bottom navbar -->
+        <nav class="bottom-navbar">
+            <div class="nav-container-fluid">
+                <ul class="bottom-navbar-container">
+                    <li class="bottom-navbar-list">
+                        <div class="bottom-navbar-icons">
+                            <i class="fas fa-tasks" style="color: #256d85; font-size: 24px;"></i>
+                        </div>
+                    </li>
+                    <li class="bottom-navbar-list">
+                        <div class="bottom-navbar-icons">
+                            <i class="fas fa-cogs" style="color: #256d85; font-size: 24px;"></i>
+                        </div>
+                    </li>
+                    <li class="bottom-navbar-list">
+                        <div class="bottom-navbar-icons">
+                            <i class="fas fa-house" style="color: #256d85; font-size: 24px;"></i>
+                        </div>
+                    </li>
+                    <li class="bottom-navbar-list">
+                        <div class="bottom-navbar-icons">
+                            <!-- <i class="fas fa-hammer" style="color: #28a745; font-size: 24px;"></i> -->
+                            <i class="fas fa-history" style="color: #256d85; font-size: 24px;"></i>
+    
+    
+                        </div>
+                    </li>
+                    <li class="bottom-navbar-list">
+                        <div class="bottom-navbar-icons">
+                            <i class="fas fa-user-alt" style="color: #256d85; font-size: 24px;"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- end of bottom navbar -->
     </div>
+    <!-- end of main container -->
 {% endblock %}

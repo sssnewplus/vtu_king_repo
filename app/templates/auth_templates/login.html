@@ -8,14 +8,16 @@
     <div class="auth-wrapper">
         <div class="auth-box">
             <div class="back-btn-container">
-                <button class="get-back-btn" name="username_submit_btn">
-                    <i class="fas fa-chevron-left" style="color: #256D85; font-size: 24px;"></i>
+                <button class="get-back-btn" name="username_submit_btn" onclick="location.href='.'">
+                    <i class="fas fa-chevron-left" style="font-size: 24px;"></i>
                 </button>
-                <h2 class="auth-heading"><strong>Welcome back!</strong></h2>
+                <div class="auth-heading">
+                    <h2><strong>Welcome back!</strong></h2>
+                </div>
             </div>
-            <!-- <img src="{{ url_for('static', filename='images/auth_images/icon.png')}}" class="login-icon"> -->
-            <p class="have-account">Log in to your account</p>
-            <br>
+            <div class="auth-box-p">
+                <p class="have-account">Log in to your account</p>
+            </div>
             <form class="auth-form" method="post">
                 <div class="input-container">
                     <i class="fas fa-user" style="color: #06283D; font-size: 24px;"></i>
@@ -32,8 +34,7 @@
                     <p class="have-account"><a class="term" href="/reset-password">Forget Password</a></p>
                     <p class="have-account">You don't have account? <a class="term" href="/sign-up">Sign Up</a></p>
                 </div>
-                </form>   
-           
+            </form>
         </div>
     </div>
 {% endblock %}

@@ -1,400 +1,199 @@
-/* constant required css reset */
-    body {
-        background-color: #fff;
-        box-sizing: border-box;
-        font-family: 'Poppins';
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-        
-    }
-/* end of reset */
-
-
-/* authentication base template view */
-    /* .content { 
-        /* background-color: #f7fff7; */
-    
-/* end of authentication base template view */
-
-
-/* 6 authentication views*/
-
-
-     /* 1. pre auth view */
-        .pre-auth-wrapper {
-            background-color: #fff;
-            display: flex;
-            min-height: 100vh;
-            justify-content: center;
-            width: 100%;
-        }
-        .pre-auth-container {
-            align-items: center;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            height: auto;
-            justify-content: center;
-            margin-bottom: 30px;
-            margin-top: 30px;
-            padding: 20px;
-            width: 70%;
-        }
-        .pre-auth-icon {
-            align-items: center;
-            border: none;
-            box-shadow: 0 4px 8px #797878;
-            border-radius: 50%;
-            height: 100px;
-            margin-top: 10px;
-            margin: 20px;
-            width: 100px;
-        }
-        .pre-auth-heading {
-            color: #256D85;
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-top: 10px;
-        }
-        .pre-auth-brand {
-            color: #256D85;
-            font-size: 2rem;
-            font-weight: bolder;
-            margin-top: -10px;
-            text-align: center;
-        }
-        .pre-auth-paragraph {
-            color: #256D85;
-            font-size: 1.2rem;
-            margin-top: 20px;
-            text-align: center;
-            padding: 20px;
-            width: 60%;
-        }
-        .pre-auth-btn-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-            width: 100%;
-        }
-        .pre-auth-btn-container  button {
-            /* border: none; */
-            border-radius: 10px;
-            cursor: pointer;
-            display: inline-block;
-            font-size: 17px;
-            font-weight: bold;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            width: 100%;
-        }
-        .pre-auth-sign-up-btn {
-            border: none;
-            background-color: #256D85;
-            color: #fff;
-        }
-
-        .pre-auth-login-btn {
-            background-color: transparent;
-            border: 0.5px, solid #256D85;
-            color: #256D85;
-        }
-    /* end of pre-auth view */
-
-
-    /* 2. login view together with sign up view */
-        /* to be served */
-        .auth-wrapper {
-            background-color: #fff;
-            height: 100%;
-            padding: 30px 0 30px 0;
-            width: 100%;
-        }
-
-        /* to be served */
-        .auth-box {
-            align-items: center;
-            background-color: white;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100%;
-            margin: auto;
-            width: 70%;
-        }
-
-        /* to be served */
-        /* .auth-icon {
-        
-        } */
-
-        /* to be served */
-        .auth-heading {
-            color: #256D85;
-            text-align: center;
-            width: 100%;
-        }
-        
-        /* to be served */
-        .auth-form {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 5px;
-            width: 90%;
-        }
-        
-        .input-container {
-            display: flex;
-            box-sizing: border-box;
-            align-items: center;
-            border: 2px solid #fff;
-            border-radius: 10px;
-            gap: 10px;
-            padding: 5px;
-            background-color: #256D854D;
-            width: 100%;
-        }
-
-        .input-container:hover {
-            border-color: #256D85;
-            cursor: pointer;
-        }
-
-        /* to be served */
-        .input-container input {
-            background-color: transparent;
-            border: none;
-            box-sizing: border-box;
-            outline: none;
-            color: #256D85;
-            flex-grow: 1;
-            font-size: 16px;
-            margin-top: 10px;
-            padding: 5px;
-            height: 100%;
-            width: 100%;
-        }
-
-
-        .input-container i {
-            margin-left: 10px;
-            font-size: 18px;
-          }
-
-
-        .input-container input::placeholder {
-            color: #256D85;
-        }
-
-        /* to be served */
-        .submit-container {
-            align-items: center;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            width: 100%;
-        }
-
-        /* to be served */ 
-        .submit-btn {
-            box-sizing: border-box;
-            background-color: #256D85;
-            border: none;
-            border-radius: 15px;
-            color: white;
-            font-size: 18px;
-            font-weight: 600;
-            padding: 10px 15px;
-            outline: none;
-            width: 100%;
-        }
-
-        .terms {
-            font-size: 15px;
-            text-align: center;
-            width: 100%;
-        }
-
-        .have-account {
-            font-size: 17px;
-            color: #256D85;
-            text-align: center;
-        }
-        .term {
-            color: #256D85;
-            font-weight: 700;
-            /* text-decoration: none; */
-        }
-        .get-code-btn{
-
-            padding-top: 6px;
-            padding-bottom: 6px;
-            outline: none;
-            color: #256D85;
-            border: none;
-            /* border-radius: 10px; */
-            background-color: transparent;
-            height: 90%;
-            width: 50%;
-        }
-
-        .back-btn-container {
-            display: flex;
-            justify-content: flex-start;
-            gap: 30px;
-            width: 100%;
-        }
-        .get-back-btn {
-            margin-top: 0;
-            margin-bottom: 0;
-            outline: none;
-            color: #06283D;
-            font-size: 24px;
-            border: none;
-            background-color: transparent;
-        }
-
-
-     
-
-    /* end of login and sign up views*/
-
-    /* 3. sign up view */
-        /* served above */
-    /* end of sign up */
-
-    /* 4. find account and request otp view (to forgot password) */
-        /* served */
-        /* .find-account-wrapper {
-        } */
-
-        /* served */
-        /* .find-account-box {
-        } */
-
-        /* served */
-        /* .auth-icon {
-        } */
-        
-        /* served */
-        /* .auth-heading {
-        } */
-
-    /* end of find account view */
-
-    /* 5. validate otp */
-        /* served */
-        /* .confirm-otp-wrapper {
-        } */
-
-        /* served */
-        /* .confirm-otp-box {
-        } */
-
-        /* served */
-        /* .auth-icon {
-        } */
-
-        /* served */
-        /* .auth-heading {
-        } */
-
-
-    /* end of validate otp */
-
-    /* 6. create new password */
-        /* served */
-        /* .create-new-wrapper {
-        } */
-
-        /* served */
-        /* .create-new-box {
-        } */
-
-        /* served */
-        /* .auth-icon {
-        } */
-
-        /* served */
-        /* .auth-heading {
-            }*/
-
-
-    /* end of create new password */
-
-/* end of six authentication views */
-
-
-
-
+body {
+    background-color: #fff;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+    height: 100vh;
+    margin: 0;
+    padding: 0;    
+}   
+.auth-wrapper {
+    background-color: #fff;
+    height: 100%;
+    padding: 30px 0 30px 0;
+    width: 100%;
+}
+.auth-box {
+    align-items: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    margin: auto;
+    width: 50%;
+}
+.back-btn-container {
+    box-sizing: border-box;
+    display: flex;
+    gap: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    width: 90%;
+}
+.get-back-btn {
+    background-color: transparent;
+    border: none;
+    color: #256D85;
+    float: left;
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 0;
+    outline: none;
+}
+.get-back-btn:hover {
+    background-color: #256D85;
+    border-radius: 8px;
+    color: #fff;
+}
+.auth-heading {
+    display: flex;
+    color: #256D85;
+    justify-content: space-between;
+}
+.auth-heading h2 {
+    margin: 0;
+    padding: 0;
+    text-align: center; 
+}
+.auth-box-p {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 15px;
+    width: 90%;   
+}
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    width: 90%;
+}
+.input-container {
+    align-items: center;
+    background-color: #256D854D;
+    border: 2px solid #fff;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+    width: 100%;
+}
+.input-container:hover {
+    border-color: #256D85;
+    cursor: pointer;
+}
+.input-container input {
+    background-color: transparent;
+    border: none;
+    box-sizing: border-box;
+    color: #256D85;
+    flex-grow: 1;
+    font-size: 16px;
+    height: 100%;
+    margin-top: 10px;
+    outline: none;
+    padding: 5px;
+    width: 100%;
+}
+.input-container i {
+    font-size: 18px;
+    margin-left: 10px;
+}
+.input-container input::placeholder {
+    color: #256D85;
+} 
+.submit-container {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+.submit-btn {
+    background-color: #256D85;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    outline: none;
+    padding: 10px 15px;
+    width: 60%;
+}
+.submit-btn:hover {
+    background-color: #256D854D;
+    color: #256D85;
+    cursor: pointer;
+}
+.terms {
+    font-size: 15px;
+    text-align: center;
+    width: 100%;
+}
+.have-account {
+    color: #256D85;
+    font-size: 17px;
+    text-align: center;
+}
+.term {
+    color: #256D85;
+    font-weight: 700;
+}
+.term:hover {
+    color: #256D854D;
+}
+.get-code-btn{
+    background-color: transparent;
+    border: none;
+    color: #256D85;
+    font-weight: 700;
+    height: 90%;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    width: 30%;
+}
+.get-code-btn:hover {
+    background-color: #256D85;
+    border: 0.5px #256D85 solid;
+    border-radius: 8px;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    width: 50%;
+}
 
 /* for medium and small screens */
-    @media (max-width: 689px) {
-
-        /* authentication base template view */
-            /* .content { 
-
-            } */
-        /* end of authentication base template view */
-
-
-        /* 6 authentication views */
-        /* 1. pre auth view */
-            .pre-auth-btn-container {
-                display: flex;
-                justify-content: center; 
-                gap: 10px;
-                margin-bottom: 20px;
-                margin-top: 20px;
-                width: 40%;
-            }
-            .pre-auth-btn-container > button {
-                width: 100%;
-            }
-        /* end of pre-auth view */
-
-        /* 2. login viewntogether with sign up view */
-            .auth-wrapper {
-                box-sizing: border-box;
-                padding: 40px 15px 40px 15px;
-                width: 100%;
-            }
-            .auth-box {
-                box-sizing: border-box;
-                height: 80%;
-                width: 100%;
-            }
-            .auth-heading {
-                width: 55%;
-            }
-        /* end of login view */
-
-        /* 3. sign up view */
-            /* served above */
-        /* end of sign up */
-
-        /* 4. find account and request otp view (to forgot password) */
-            
-        /* end of find account view */
-
-        /* 5. validate otp */
-        
-        /* end of validate otp */
-
-        /* 6. create new password */
-        
-        /* end of create new password */
-
-        
-        /* end of six authentication views */
-    
+@media (max-width: 689px) {
+    .pre-auth-btn-container {
+        display: flex;
+        justify-content: center; 
+        gap: 10px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        width: 40%;
     }
-    /* end of medium screen */
+    .pre-auth-btn-container button {
+        width: 100%;
+    }
+    .pre-auth-container p {
+        width: 100%;
+    }
+    .auth-wrapper {
+        box-sizing: border-box;
+        padding: 40px 15px 40px 15px;
+        width: 100%;
+    }
+    .auth-box {
+        box-sizing: border-box;
+        height: 100vh;
+        width: 100%;
+    }
+    .submit-btn {
+        width: 100%;
+    }
+}

@@ -1,13 +1,130 @@
-{% extends 'auth_templates/auth_base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login/signup</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .pre-auth-wrapper {
+            background-image: url('../static/images/other_images/pre_auth.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            box-sizing: border-box;
+            font-family: 'Poppins';
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100%;
+        }
+        .pre-auth-container {
+            align-items: center;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            justify-content: center;
+            margin-bottom: 30px;
+            margin-top: 30px;
+            padding: 20px;
+            width: 70%;
+        }
+        .pre-auth-container p {
+            width: 50%;
+        }
+        /* .pre-auth-icon {
+            align-items: center;
+            border: none;
+            height: 100px;
+            margin-top: 10px;
+            margin: 20px;
+            width: 100px;
+        } */
+        .pre-auth-heading {
+            color: #256D85;
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+        .pre-auth-brand {
+            color: #256D85;
+            font-size: 2rem;
+            font-weight: bolder;
+            margin-top: -10px;
+            text-align: center;
+        }
+        .pre-auth-paragraph {
+            color: #256D85;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            padding: 20px;
+            text-align: center;
+            width: 60%;
+        }
+        .pre-auth-btn-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .pre-auth-btn-container  button {
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            width: 30%;
+        }
+        .pre-auth-sign-up-btn {
+            border: none;
+            background-color: #256D85;
+            color: #fff;
+        }
+        .pre-auth-login-btn {
+            background-color: transparent;
+            border: 0.5px, solid #256D85;
+            color: #256D85;
+        }
+        .have-account {
+            color: #256D85;
+            font-size: 17px;
+            text-align: center;
+        }
 
-{% block title %}
-    login/sign up
-{% endblock %}
-
-{% block content %}
+        @media (max-width: 689px) {
+            .pre-auth-btn-container {
+                display: flex;
+                justify-content: center; 
+                gap: 10px;
+                margin-bottom: 20px;
+                margin-top: 20px;
+                width: 40%;
+            }
+            .pre-auth-btn-container button {
+                width: 100%;
+            }
+            .pre-auth-container p {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
     <div class="pre-auth-wrapper">
         <div class="pre-auth-container">
-            <img src="{{url_for('static', filename='images/auth_images/icon.png')}}" alt="" class="pre-auth-icon">
+            <img height="150" src="{{url_for('static', filename='../static/images/other_images/start_whitelogo.png')}}" alt="" class="pre-auth-icon">
             <h3 class="pre-auth-heading">
                 Welcome To:
             </h3>
@@ -23,10 +140,9 @@
             </p>
             <div class="pre-auth-btn-container">
                 <button class="pre-auth-sign-up-btn" type="submit" onclick="location.href='/sign-up'">SignUp</button>
-                <!-- <p class="pre-auth-or">or</p> -->
                 <button class="pre-auth-login-btn"type="submit" onclick="location.href='/login'">LogIn</button>
             </div>
         </div>
     </div>
-
-{% endblock %}
+</body>
+</html>

@@ -10,18 +10,19 @@
             <button class="get-back-btn" name="username_submit_btn">
                 <i class="fas fa-chevron-left" style="color: #256D85; font-size: 24px;"></i>
             </button>
-            <h2 class="auth-heading"><strong>Wallet Funding</strong></h2>
+            <div class="auth-heading">
+                <h2><strong>Wallet Funding</strong></h2>
+            </div>
         </div>
-        <!-- <img src="{{ url_for('static', filename='images/auth_images/icon.png')}}" class="login-icon"> -->
-        <p class="have-account">....</p>
-        <br>
+        <div class="auth-box-p">
+            <p class="have-account">Fund your Wallet</p>
+        </div>
         <form class="auth-form" method="post">
             <div class="input-container">
                 <input type="text" class="input" placeholder="Method" id="funding_method" name="funding_method">
                 <i class="fas fa-chevron-down" style="color: #256D85; font-size: 24px;"></i>
             </div>
             <div class="input-container">
-                <!-- <i class="fas fa-lock" style="color: #06283D; font-size: 24px;"></i> -->
                 <input type="text" class="input" placeholder="Amount" id="amount" name="amount">
             </div>
             <div class="submit-container">

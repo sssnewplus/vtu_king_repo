@@ -8,15 +8,19 @@
     <div class="auth-wrapper">
         <div class="auth-box">
             <div class="back-btn-container">
-                <button class="get-back-btn" name="username_submit_btn">
-                    <i class="fas fa-chevron-left" style="color: #256D85; font-size: 24px;"></i>
+                <button class="get-back-btn" name="username_submit_btn" onclick="location.href='.'">
+                    <i class="fas fa-chevron-left" style="font-size: 24px;"></i>
                 </button>
-                <h2 class="auth-heading"><strong>Change of pin</strong></h2>
+                <div class="auth-heading">
+                    <h2><strong>Change Of Pin</strong></h2>
+                </div>
             </div>
-            <!-- <img src="{{ url_for('static', filename='images/auth_images/icon.png')}}" class="sign-up-icon"> -->
+            <div class="auth-box-p">
+                <p class="have-account">Changing pin</p>
+            </div>
             <div class="auth-form">
                 <form method="POST">
-                    <p style="font-size:13px;">Changing pin</p>
+                    <!-- <p style="font-size:13px;"></p> -->
                     <div class="input-container">
                         <i class="fas fa-lock" style="color: #06283D; font-size: 24px;"></i>
                         <input type="password" id="old_pin" name="old_pin" placeholder="Old pin">
