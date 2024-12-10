@@ -23,15 +23,40 @@
                     <!-- <p style="font-size:13px;"></p> -->
                     <div class="input-container">
                         <i class="fas fa-lock" style="color: #06283D; font-size: 24px;"></i>
-                        <input type="password" id="old_pin" name="old_pin" placeholder="Old pin">
+                        <input 
+                            type="password" 
+                            id="old_pin" 
+                            maxlength="4" 
+                            pattern="\d{4}" 
+                            placeholder="Enter 4-digit PIN" 
+                            title="Please enter exactly 4 digits" 
+                            required>
+                        <i class="fas fa-eye-slash" id="togglePassword" onclick="togglePasswordVisibility('old_pin', 'togglePassword')"></i>
                     </div>
                     <div class="input-container">
                         <i class="fas fa-lock" style="color: #06283D; font-size: 24px;"></i>
-                        <input type="password" id="new_pin1" name="new_pin1" placeholder="New pin">
+                        <input
+                            type="password" 
+                            id="new_pin1" 
+                            maxlength="4" 
+                            pattern="\d{4}" 
+                            placeholder="Enter 4-digit PIN" 
+                            title="Please enter exactly 4 digits" 
+                            required>
+                        <i class="fas fa-eye-slash" id="togglePassword1" onclick="togglePasswordVisibility('new_pin1', 'togglePassword1')"></i>
                     </div>
-                    <div class="input-container">
+                    <div class="input-container ">
                         <i class="fas fa-lock" style="color: #06283D; font-size: 24px;"></i>
-                        <input type="password" id="new_pin2" name="new_pin2" placeholder="Re-enter new pin">
+                        <input 
+                            type="password" 
+                            id="new_pin2" 
+                            maxlength="4" 
+                            pattern="\d{4}" 
+                            placeholder="Enter 4-digit PIN" 
+                            title="Please enter exactly 4 digits" 
+                            required>
+                        <i class="fas fa-eye-slash" id="togglePassword2" onclick="togglePasswordVisibility('new_pin2', 'togglePassword2')"></i>
+                    
                     </div>
                     <div class="submit-container">
                         <button type="submit" class="submit-btn" name="password_submit_btn">Submit</button>

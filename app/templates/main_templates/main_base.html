@@ -14,5 +14,29 @@
 <body>
     {% block content %}
     {% endblock %}
+    <!-- script to achieve balance toggler func -->
+    <script>
+        function toggleBalance() {
+            const balanceElement = document.getElementById('user_balance');
+            const balanceElement2 = document.getElementById('user_balance1')
+            const toggleIcon = document.getElementById('toggle_balance');
+        
+            if (balanceElement.dataset.hidden === "true") {
+                balanceElement.textContent = balanceElement.dataset.balance; // Show balance
+                balanceElement.dataset.hidden = "false";
+                balanceElement2.textContent = balanceElement.dataset.balance; // Show balance
+                balanceElement2.dataset.hidden = "false";
+                toggleIcon.className = "fa fa-eye";
+            } else {
+                balanceElement.dataset.balance = balanceElement.textContent; // Store balance
+                balanceElement.textContent = "*****"; // hide balance (put it to mask)
+                balanceElement.dataset.hidden = "true";
+                balanceElement2.dataset.balance = balanceElement.textContent; // Store balance
+                balanceElement2.textContent = "*****"; // hide balance (put it to mask)
+                balanceElement2.dataset.hidden = "true";
+                toggleIcon.className = "fa fa-eye-slash";
+            }
+        }
+    </script>
 </body>
 </html>

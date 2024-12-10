@@ -21,11 +21,23 @@
             <form class="auth-form" method="post">
                 <div class="input-container">
                     <i class="fas fa-user" style="color: #06283D; font-size: 24px;"></i>
-                    <input type="text" class="input" placeholder="Username Or Email" id="username" name="username_or_email">
+                    <input 
+                        type="text" 
+                        class="input" 
+                        placeholder="Username Or Email" 
+                        id="username" 
+                        name="username_or_email"
+                        value="{{ session['username'] }}">
                 </div>
                 <div class="input-container">
                     <i class="fas fa-lock" style="color: #06283D; font-size: 24px;"></i>
-                    <input type="password" class="input" placeholder="Password" id="password" name="password">
+                    <input 
+                        type="password" 
+                        class="input" 
+                        placeholder="Password" 
+                        id="password" 
+                        name="password">
+                    <i class="fas fa-eye-slash" id="togglePassword" onclick="togglePasswordVisibility('password', 'togglePassword')"></i>
                 </div>
                 <div class="submit-container">
                     <button type="submit" class="submit-btn">Login</button>

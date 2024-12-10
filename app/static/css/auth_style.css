@@ -103,7 +103,12 @@ body {
 }
 .input-container input::placeholder {
     color: #256D85;
-} 
+}
+.input-container .fa-eye-slash, .input-container .fa-eye {
+    color: #06283D;
+    font-size: 20px;
+    margin-right: 10px;
+}
 .submit-container {
     align-items: center;
     box-sizing: border-box;

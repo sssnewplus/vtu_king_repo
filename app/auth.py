@@ -12,12 +12,6 @@ auth = Blueprint("auth", __name__)
 # welcome route
 @auth.route("/", methods=['POST', 'GET'])
 def welcome():
-    # username = session['username']
-    # user = User.query.filter_by(username=username)
-    # if username:
-    #     if user:
-    #         return render_template("auth_templates/welcome.html")
-    #     return redirect(url_for('auth.login'))
     return render_template("auth_templates/welcome.html")
 
 
@@ -54,61 +48,62 @@ def sign_up():
         # checks if the input field are empty
         if not name or not username or not email or not phone_number or not password1 or not password2:
             flash("All fields are required except referral", category="error")
-            return redirect(url_for('auth.sign_up'))
+            return render_template('auth_templates/sign_up.html')
 
         # check if username or email already exists
         elif user_username:
             flash("Username already exists", category="error")
-            return redirect(url_for('auth.sign_up'))
+            return render_template('auth_templates/sign_up.html')
 
         elif user_email:
             flash("Email already exists", category="error")
-            return redirect(url_for('auth.sign_up'))
+            return render_template('auth_templates/sign_up.html')
 
         # check if name is valid
         elif not name.isalpha() or not name.strip():
             flash("Name must contain only alphabetic characters", category="error")
-            return redirect(url_for('auth.sign_up'))
+            return render_template('auth_templates/sign_up.html')
         elif len(name) < 3:
             flash("Name must be at least 3 characters long", category="error")
-            return redirect(url_for('auth.sign_up'))
+            return render_template('auth_templates/sign_up.html')
 
         # check if username is valid
         elif not username.isalnum() or not username.strip():
             flash("Username must contain only alphanumeric characters", category="error")
-            return redirect(url_for('auth.sign_up'))
+            return render_template('auth_templates/sign_up.html')
         elif len(username) < 5:
             flash("Username must be at least 5 characters long", category="error")
-            return redirect(url_for('auth.sign_up'))
+            return render_template('auth_templates/sign_up.html')
 
         # check if email is valid
         elif not validate_email(email):
             flash("Invalid email address", category="error")
-            return redirect(url_for('auth.sign_up'))
+            return render_template('auth_templates/sign_up.html')
 
         # check if phone number is valid
         elif not validate_phone_number(phone_number):
             flash("Invalid phone number format, ", category="error")
-            return redirect(url_for('auth.sign_up'))
+            return render_template('auth_templates/sign_up.html')
 
         # check if passwords match
         elif password1 != password2:
             flash("Passwords do not match", category="error")
-            return redirect(url_for('auth.sign_up'))
+            return render_template('auth_templates/sign_up.html')
         elif len(password1) < 8:
             flash("Password must be at least 8 characters long", category="error")
-            return redirect(url_for('auth.sign_up'))
+            return render_template('auth_templates/sign_up.html')
         elif not validate_password(password2):
             flash("Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character", category="error")
-            return redirect(url_for('auth.sign_up'))
+            return render_template('auth_templates/sign_up.html')
         else:
             # checks if referral exists in users
             referral = User.query.filter_by(username=referral_username).first()
             if not referral:
                 flash("Referral username doesn't exist!", category="info")
-                # return redirect(url_for('auth.sign_up'))
-
             referral_username = referral_username
+
+            # clear the session data
+            session.clear()
 
             # create a new user
             new_user = User()
@@ -127,13 +122,6 @@ def sign_up():
                 # save the api wallet id to the database
                 new_user.api_wallet_id = api_wallet["wallet_id"]
                 db.session.commit()
-
-            # clear the session data
-            session.pop('name', None)
-            session.pop('username', None)
-            session.pop('email', None)
-            session.pop('phone_number', None)
-            session.pop('referral_username', None)
 
             # login the user after signing up
             login_user(new_user)
@@ -154,13 +142,15 @@ def login():
         # check if the fields are empty
         if not username or not password:
             flash('All fields are required', category="error")
-            return redirect(url_for('auth.login'))
+            return render_template('auth_templates/login.html')
 
         # check if user exists
         # login with username and password
         user_with_username = User.query.filter_by(username=username).first()
         if user_with_username and user_with_username.check_password(password):
             flash('Login successful', category="success")
+            # clear the session
+            session.clear()
             login_user(user_with_username)
             return render_template("main_templates/main_dashboard.html")
 
@@ -171,19 +161,22 @@ def login():
                 flash('Login successful', category="success")
                 # clear the session data
                 session.pop('username', None)
+                # clear the session
+                session.clear()
                 login_user(user_with_email)
                 return render_template("main_templates/main_dashboard.html")
         else:
             flash('Invalid username or password', category="error")
-            return redirect(url_for('auth.login'))
+            return render_template("auth_templates/login.html")
     return render_template("auth_templates/login.html")
 
 # 4 logout route (additional route ( it's non-template rendering ))
 @auth.route("/logout", methods=['POST', 'GET'])
 @login_required
 def logout():
-    logout_user()
+    # clear the session
     session.clear()
+    logout_user()
     return render_template("auth_templates/pre_auth.html")
 
 # 5 password forgotten route (find account, request otp and reset password)
@@ -193,13 +186,12 @@ def reset_password():
         username = request.form.get('username_or_email')
         session['username'] = username
 
-        user_by_email = User.query.filter_by(email=username).first()
-        user_by_username = User.query.filter_by(username=username).first()
-
-
         if not username:
             flash('enter your username or email', category='error')
-            return redirect(url_for('auth.reset_password'))
+            return render_template('auth_templates/reset_password.html')
+
+        user_by_email = User.query.filter_by(email=username).first()
+        user_by_username = User.query.filter_by(username=username).first()
 
         # first form to find the account using email or username then request for otp
         if 'username_submit_btn' in request.form:
@@ -215,10 +207,10 @@ def reset_password():
                 flash('otp sent to your email', category='success')
             elif not user_by_username:
                 flash("account with this username doesn't exist", category='error')
-                return redirect(url_for('auth.reset_password'))
+                return render_template('auth_templates/reset_password.html')
             elif not user_by_email:
                 flash("account with this email doesn't exist", category='error')
-                return redirect(url_for('auth.reset_password'))
+                return render_template('auth_templates/reset_password.html')
 
             user_otp = request.form.get('otp')
             session['user_otp'] = user_otp
@@ -228,10 +220,10 @@ def reset_password():
                 return redirect(url_for('auth.reset_password'))
             else:
                 flash('invalid otp', category='error')
-                return redirect(url_for('auth.reset_password'))
+                return render_template('auth_templates/reset_password.html')
 
-        # third form to reset the password
-        elif 'password_submit_btn' in request.form:
+        # second form to reset the password
+        if 'password_submit_btn' in request.form:
             password1 = request.form.get('password1')
             password2 = request.form.get('password2')
             if password1 == password2:
@@ -247,13 +239,12 @@ def reset_password():
                     user_by_username.set_password(password2)
                     db.session.commit()
                     flash('Password reset successful, proceed to login', category="success")
-                    session.pop('username', None)
-                    session.pop('otp', None)
-                    session.pop('user_otp', None)
+                    # clear the session
+                    session.clear()
                     return redirect(url_for('auth.login'))
             else:
                     flash('Passwords do not match', category="error")
-                    return redirect(url_for('auth.reset_password'))
+                    return render_template('auth_templates/reset_password.html')
 
     return render_template("auth_templates/reset_password.html")
 
