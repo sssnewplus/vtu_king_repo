@@ -7,24 +7,34 @@
 <div class="auth-wrapper">
     <div class="auth-box">
         <div class="back-btn-container">
-            <button class="get-back-btn" name="username_submit_btn">
-                <i class="fas fa-chevron-left" style="color: #256D85; font-size: 24px;"></i>
+            <button class="get-back-btn" name="username_submit_btn" onclick="history.back()">
+                <i class="fas fa-chevron-left" style="font-size: 24px;"></i>
             </button>
             <div class="auth-heading">
                 <h2><strong>Electricity Payment</strong></h2>
             </div>
         </div>
+        <!-- to show flashed messages -->
+        {% with messages = get_flashed_messages( with_categories = true )%}
+            {% if messages %}
+                <ul>
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
         <div class="auth-box-p">
-            <p class="have-account">Pay your account electricity power bill</p>
+            <p class="have-account">Pay your electricity power bill</p>
         </div>
         <form class="auth-form" method="post">
             <div class="input-container">
                 <input type="text" class="input" placeholder="Disco name" id="disco_name" name="disco_name">
-                <i class="fas fa-chevron-down" style="color: #256D85; font-size: 24px;"></i>
+                <i class="fas fa-chevron-down"></i>
             </div>
             <div class="input-container">
                 <input type="text" class="input" placeholder="Meter type" id="meter_type" name="meter_type">
-                <i class="fas fa-chevron-down" style="color: #256D85; font-size: 24px;"></i>
+                <i class="fas fa-chevron-down"></i>
             </div>
             <div class="input-container">
                 <input type="text" class="input" placeholder="Name" id="name" name="name">

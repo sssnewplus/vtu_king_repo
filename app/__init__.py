@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
+from datetime import timedelta
 from flask_login import LoginManager
 from flask_migrate import Migrate
 
@@ -20,6 +21,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.secret_key = "whatever we wanna trigger as our secret key"
+    app.config['REMEMBER_COOKIE_DURATION'] = timedelta(minutes=30)
 
     # init. database
     db.init_app(app)

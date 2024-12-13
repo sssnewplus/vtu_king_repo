@@ -128,7 +128,7 @@
             
             <!-- welcome header -->
             <div class="welcome-header">
-                <h2>Welcome user.username</h2>
+                <h2>Welcome {{ current_user.username }}</h2>
             </div>
             <!-- end of welcome header -->
         
@@ -140,7 +140,7 @@
                             <p>Balance <span><i class="fas fa-eye-slash" id="toggle_balance" onclick="toggleBalance()"> </i></span></p>
                         </div>
                         <div class="assets mobile-none">
-                            <p id="user_balance">user.balance</p>
+                            <p id="user_balance">{{ current_user.balance }}</p>
                         </div>
                         <div class="trxn pc-none fund">
                             <button type="button">
@@ -150,7 +150,7 @@
                     </div>
                     <div class="banner-right">
                         <div class="assets pc-none">
-                            <p id="user_balance1">user.balance</p>
+                            <p id="user_balance1">{{ current_user.balance }}</p>
                         </div>
                         <div class="trxn mobile-none fund">
                             <button type="button" onclick="location.href='/transactions'">

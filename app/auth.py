@@ -27,7 +27,7 @@ def sign_up():
     if request.method == 'POST':
 
         # grab the user data
-        name = request.form.get("full_name")
+        full_name = request.form.get("full_name")
         username = request.form.get("username")
         email = request.form.get("email")
         phone_number = request.form.get("phone_number")
@@ -36,7 +36,7 @@ def sign_up():
         password2 = request.form.get("password2")
 
         # lets store form data in a session
-        session['name'] = name
+        session['full_name'] = full_name
         session['username'] = username
         session['email'] = email
         session['phone_number'] = phone_number
@@ -46,8 +46,8 @@ def sign_up():
         user_email = User.query.filter_by(username=email).first()
 
         # checks if the input field are empty
-        if not name or not username or not email or not phone_number or not password1 or not password2:
-            flash("All fields are required except referral", category="error")
+        if not full_name or not username or not email or not phone_number or not password1 or not password2:
+            flash("All fields are required except for referral username", category="error")
             return render_template('auth_templates/sign_up.html')
 
         # check if username or email already exists
@@ -59,11 +59,13 @@ def sign_up():
             flash("Email already exists", category="error")
             return render_template('auth_templates/sign_up.html')
 
+        # bandwidth neglect this check
         # check if name is valid
-        elif not name.isalpha() or not name.strip():
-            flash("Name must contain only alphabetic characters", category="error")
-            return render_template('auth_templates/sign_up.html')
-        elif len(name) < 3:
+        # elif not full_name.isalpha() or not full_name.strip():
+        #     flash("Name must contain only alphabetic characters", category="error")
+        #     return render_template('auth_templates/sign_up.html')
+
+        elif len(full_name) < 3:
             flash("Name must be at least 3 characters long", category="error")
             return render_template('auth_templates/sign_up.html')
 
@@ -82,7 +84,7 @@ def sign_up():
 
         # check if phone number is valid
         elif not validate_phone_number(phone_number):
-            flash("Invalid phone number format, ", category="error")
+            flash("Invalid phone number format, use country code format", category="error")
             return render_template('auth_templates/sign_up.html')
 
         # check if passwords match
@@ -107,7 +109,7 @@ def sign_up():
 
             # create a new user
             new_user = User()
-            new_user.set_name(name)
+            new_user.set_name(full_name)
             new_user.set_username(username)
             new_user.set_email(email)
             new_user.set_password(password2)

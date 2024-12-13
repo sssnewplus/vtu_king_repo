@@ -7,21 +7,31 @@
 {% block content %}
     <div class="auth-wrapper">
         <div class="auth-box">
-            <div class="back-btn-container">
-                <button class="get-back-btn" name="username_submit_btn" onclick="location.href='.'">
+            <div class="back-btn-container" style="padding-top:20px;">
+                <button class="get-back-btn" name="username_submit_btn" onclick="history.back()">
                     <i class="fas fa-chevron-left" style="font-size: 24px;"></i>
                 </button>
                 <div class="auth-heading">
                     <h2><strong>Welcome!</strong></h2>
                 </div>
             </div>
+            <!-- to show flashed messages -->
+            {% with messages = get_flashed_messages( with_categories = true )%}
+                {% if messages %}
+                    <ul>
+                        {% for category, message in messages %}
+                            <li class="{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
             <div class="auth-box-p">
                 <p class="have-account">Register your account</p>
             </div>
             <form class="auth-form" method="post">
                 <div class="input-container">
                     <i class="fas fa-user" style="color: #06283D; font-size: 24px;"></i>
-                    <input type="text" class="input" placeholder="Fullname" id="full_name" name="name" value="{{ session['name'] }}">
+                    <input type="text" class="input" placeholder="Fullname" id="full_name" name="full_name" value="{{ session['full_name'] }}">
                 </div>
                 <div class="input-container">
                     <i class="fas fa-user" style="color: #06283D; font-size: 24px;"></i>
