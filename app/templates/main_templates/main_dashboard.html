@@ -360,7 +360,13 @@
                         </div>
                     </div> 
                     <div class="account-details-container">
-                        <p class="acc-details-text">Total Referrals: 30</p>
+                        <p class="acc-details-text">Total Referrals: 
+                            {% if not current_user.referrals %}
+                                0
+                            {% else %}
+                                {{ current_user.referrals.length }}
+                            {% endif %}
+                        </p>
                         <p class="acc-details-text"> <a href="#">Refer & Earn</a></p>
                     </div>    
                 </div>

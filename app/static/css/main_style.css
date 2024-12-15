@@ -284,12 +284,11 @@ body {
     justify-content: space-around;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 10px 5px 10px 5px;
     width: 100%;
 }
 .navbar-list {
     padding-top: 10px;
-    padding-bottom: 10px;
     display: inline-block;
 }
 
