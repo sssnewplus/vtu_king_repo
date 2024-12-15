@@ -31,7 +31,7 @@ def create_app():
 
     # init. login manager
     login_manager.init_app(app)
-    login_manager.login_view = 'login'
+    login_manager.login_view = 'auth.login'
     login_manager.login_message_category = 'info'
 
     # user loader for the login manager

@@ -11,7 +11,7 @@
             <!-- right of the top navbar -->
             <div class="navbar-right">
                 <div class="nav-icon">  <!-- hamburger icon -->
-                    <i class="fas fa-bars" style="color: #fff; font-size: 24px;"></i>
+                    <i class="fas fa-bars" style="color: #fff; font-size: 24px;" id="hamburger_icon" onclick="toggleSideNavbar()"></i>
                 </div>
             </div>
             <!-- end of right of the top navbar -->
@@ -50,9 +50,9 @@
     <!-- main content -->
     <div class="main-container">
 
-        <!-- side navbar -->
-        <div class="left-side-navbar">
-            <div class="side-navbar-container">
+        <!-- side navbar for mobile view -->
+        <div class="hide-hamburger-side-navbar-container" id="hamburger_side_navbar">
+            <div class="hamburger-side-navbar">
                 <div class="side-nav-item">
                     <i class="fas fa-th" style="color: #fff; font-size: 16px;"></i>
                     <a href="{{ url_for('view.dashboard')}}" style="color: #fff; font-size: 16px;">Dashboard</a>
@@ -118,13 +118,84 @@
                     <i class="fas fa-power-off" style="color: red; font-size: 16px;"></i>
                     <a href="{{ url_for('auth.logout')}}" style="color: #fff; font-size: 16px;">Log Out</a>
                 </div>
+            </div>
+        </div>
+        <!-- end of side navbar for mobile view -->
 
+        <!-- side navbar for system view -->
+        <div class="left-side-navbar">
+            <div class="side-navbar-container" id="side-navbar">
+                <div class="side-nav-item">
+                    <i class="fas fa-th" style="color: #fff; font-size: 16px;"></i>
+                    <a href="{{ url_for('view.dashboard')}}" style="color: #fff; font-size: 16px;">Dashboard</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-wallet" style="color: #fff; font-size: 16px;"></i>
+                    <a href="{{ url_for('view.funding_wallet')}}" style="color: #fff; font-size: 16px;">Fund Wallet</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fa-regular fa-user" style="color: #fff; font-size: 16px;"></i>
+                    <a href="{{ url_for('view.profile')}}" style="color: #fff; font-size: 16px;">Account</a>
+                </div>
+                <!-- <h2 style="font-size: 10; color: #fff; text-align: left;">Services</h2> -->
+                <div class="side-nav-item">
+                    <i class="fas fa-mobile-alt" style="color: #fff; font-size: 16px;"></i>
+                    <a href="{{ url_for('view.buying_airtime')}}" style="color: #fff; font-size: 16px;">Buy Airtime</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-signal" style="color: #fff; font-size: 16px;"></i>
+                    <a href="{{ url_for('view.buying_data')}}" style="color: #fff; font-size: 16px;">Buy Data</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-plug" style="color: #fff; font-size: 16px;"></i>
+                    <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Electricity Payment</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-graduation-cap" style="color: #fff; font-size: 16px;"></i>
+                    <a href="{{ url_for('view.generating_exam_token')}}" style="color: #fff; font-size: 16px;">Buy Exam Token</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-tv" style="color: #fff; font-size: 16px;"></i>
+                    <a href="{{ url_for('view.subscribing_tv')}}" style="color: #fff; font-size: 16px;">TV Subscription</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-plane" style="color: #fff; font-size: 16px;"></i>
+                    <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Travelling Agencies</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-file-invoice-dollar" style="color: #fff; font-size: 16px;"></i>
+                    <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Invoice Payment</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-bus" style="color: #fff; font-size: 16px;"></i>
+                    <a href="#" style="color: #fff; font-size: 16px;">Transportation</a>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-shopping-cart" style="color: #fff; font-size: 16px;"></i>
+                    <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Online Shopping</a>
+                </div>
+                <div class="side-nav-item-drop">
+                    <div class="side-nav-item">
+                        <i class="fas fa-bus" style="color: #fff; font-size: 16px;"></i>
+                        <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">History</a>
+                        <i class="fas fa-chevron-down" style="color: #fff; font-size: 16px;"></i>
+                    </div>
+                    <div class="side-nav-item">
+                        <i class="fas fa-shopping-cart" style="color: #fff; font-size: 16px;"></i>
+                        <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Settings</a>
+                        <i class="fas fa-chevron-down" style="color: #fff; font-size: 16px;"></i>
+                    </div>
+                </div>
+                <div class="side-nav-item">
+                    <i class="fas fa-power-off" style="color: red; font-size: 16px;"></i>
+                    <a href="{{ url_for('auth.logout')}}" style="color: #fff; font-size: 16px;">Log Out</a>
+                </div>
             </div>
         </div>
         <!-- end of side navbar -->
 
         <!-- main section (middle section) -->
-        <div class="main-section">
+        <div class="show-main-section" id="main_content">
             
             <!-- welcome header -->
             <div class="welcome-header">
@@ -137,7 +208,7 @@
                 <div class="banner">
                     <div class="banner-left">
                         <div class="balance-text">
-                            <p>Balance <span><i class="fas fa-eye-slash" id="toggle_balance" onclick="toggleBalance()"> </i></span></p>
+                            <p>Balance <span><i class="fas fa-eye" id="toggle_balance" onclick="toggleBalance()"> </i></span></p>
                         </div>
                         <div class="assets mobile-none">
                             <p id="user_balance">{{ current_user.balance }}</p>

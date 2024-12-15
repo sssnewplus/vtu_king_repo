@@ -14,14 +14,18 @@
 <body>
     {% block content %}
     {% endblock %}
-    <!-- script to achieve balance toggler func -->
+
+    <!-- script to achieve re-usabilities -->
     <script>
+        // Function to toggle balance visibility
         function toggleBalance() {
             const balanceElement = document.getElementById('user_balance');
             const balanceElement2 = document.getElementById('user_balance1')
             const toggleIcon = document.getElementById('toggle_balance');
         
             if (balanceElement.dataset.hidden === "true") {
+
+                // the balances are two one for mobile view the other for system view
                 balanceElement.textContent = balanceElement.dataset.balance; // Show balance
                 balanceElement.dataset.hidden = "false";
                 balanceElement2.textContent = balanceElement.dataset.balance; // Show balance
@@ -35,6 +39,29 @@
                 balanceElement2.textContent = "*****"; // hide balance (put it to mask)
                 balanceElement2.dataset.hidden = "true";
                 toggleIcon.className = "fa fa-eye-slash";
+            }
+        }
+
+        //  Function to toggle side navbar by the hamburger icon
+        function toggleSideNavbar() {
+            const side_navbar = document.getElementById('hamburger_side_navbar');
+            const main_content = document.getElementById('main_content');
+            const hamburger_icon = document.getElementById('hamburger_icon');
+
+            if (side_navbar.classList.contains('show-hamburger-side-navbar-container')) {
+                side_navbar.classList.remove('show-hamburger-side-navbar-container');
+                side_navbar.classList.add('hide-hamburger-side-navbar-container');
+                main_content.classList.remove('hide-main-section');
+                main_content.classList.add('show-main-section');
+                hamburger_icon.classList.remove('fa-chevron-left')
+                hamburger_icon.classList.add('fa-bars')
+            } else {
+                side_navbar.classList.remove('hide-hamburger-side-navbar-container');
+                side_navbar.classList.add('show-hamburger-side-navbar-container');
+                main_content.classList.remove('show-main-section');
+                main_content.classList.add('hide-main-section');
+                hamburger_icon.classList.remove('fa-bars')
+                hamburger_icon.classList.add('fa-chevron-left')
             }
         }
     </script>

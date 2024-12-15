@@ -12,21 +12,13 @@
     </title>
 </head>
 <body>
-     <!-- {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <ul>
-                {% for category, message in messages %}
-                    <li class="{{ category }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %} -->
-    <div class="content">
-        {% block content %}
-        {% endblock %}
-    </div>
-    <!-- script to achieve password toggler func -->
+    <!-- auth content block  -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- script to achieve re-usabilities -->
     <script>
+        // Function to toggle password visibility
         function togglePasswordVisibility(passwordFieldId, iconId) {
             // Select the password field and the icon
             const passwordField = document.getElementById(passwordFieldId);
