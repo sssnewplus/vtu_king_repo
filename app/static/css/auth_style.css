@@ -1,26 +1,34 @@
+/* constant reset */
 body {
     background-color: #fff;
     box-sizing: border-box;
     font-family: 'Poppins';
-    height: 100vh;
+    /* height: 100vh; */
     margin: 0;
     padding: 0;    
-}   
+}
+
+/* first auth container */
 .auth-wrapper {
     background-color: #fff;
-    height: 100vh;
+    /* height: 100vh; */
+    padding: 30px 0 30px 0;
     width: 100%;
 }
+
+/* second auth container */
 .auth-box {
     align-items: center;
     background-color: white;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
     justify-content: center;
     margin: auto;
     width: 50%;
 }
+
+/* chenron left btn conatainer */
 .back-btn-container {
     box-sizing: border-box;
     display: flex;
@@ -30,6 +38,8 @@ body {
     margin-top: 30px;
     width: 90%;
 }
+
+/* back btn chevron left */
 .get-back-btn {
     background-color: transparent;
     border: none;
@@ -40,11 +50,15 @@ body {
     margin-bottom: 0;
     outline: none;
 }
+
+/* back btn chevron left when hovering */
 .get-back-btn:hover {
     background-color: #256D85;
     border-radius: 8px;
     color: #fff;
 }
+
+/* auth header */
 .auth-heading {
     display: flex;
     color: #256D85;
@@ -55,12 +69,17 @@ body {
     padding: 0;
     text-align: center; 
 }
+/* end of auth header */
+
+/* short auth paragraph */
 .auth-box-p {
     display: flex;
     justify-content: flex-start;
     margin-left: 15px;
     width: 90%;   
 }
+
+/* auth -> the form */
 .auth-form {
     display: flex;
     flex-direction: column;
@@ -68,6 +87,8 @@ body {
     justify-content: center;
     width: 90%;
 }
+
+/* input container */
 .input-container {
     align-items: center;
     background-color: #256D854D;
@@ -108,9 +129,15 @@ body {
     font-size: 20px;
     margin-right: 10px;
 }
-.drop-down-menu {
+/* end of input container */
+
+
+/* .drop-down-menu {
     
-}
+} */
+
+
+/* submit btn container */
 .submit-container {
     align-items: center;
     box-sizing: border-box;
@@ -119,6 +146,7 @@ body {
     margin-top: 20px;
     width: 100%;
 }
+/* submit btn */
 .submit-btn {
     background-color: #256D85;
     box-sizing: border-box;
@@ -131,11 +159,15 @@ body {
     padding: 10px 15px;
     width: 60%;
 }
+/* submit btn when hovering */
 .submit-btn:hover {
     background-color: #256D854D;
     color: #256D85;
     cursor: pointer;
 }
+/* end of submit btn container */
+
+/* from the very bottom of the auth form */
 .terms {
     font-size: 15px;
     text-align: center;
@@ -153,6 +185,9 @@ body {
 .term:hover {
     color: #256D854D;
 }
+/* end of -> from the very bottom of the auth form */
+
+/* get code btn -> password forgetting */
 .get-code-btn{
     background-color: transparent;
     border: none;
@@ -173,9 +208,51 @@ body {
     margin: 0;
     width: 50%;
 }
+/* end of get code btn */
+
+/* profile details container */
+.profile-container {
+    background-color: #256D85;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 20px;
+    width: 90%;
+}
+.table-container {
+    background-color: #256D85;
+    box-sizing: border-box;
+    border-radius: 8px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 10px 5px 10px 5px;
+    width: 100%;
+}
+.table-element {
+    color: #fff;
+}
+tr {
+    margin: 0 5px 0 5px;
+}
+
+.profile-label {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.profile-value {
+    color: #fff;
+    font-size: 16px;
+    margin-top: 5px;
+    width: 100%;
+}
+
 
 /* for medium and small screens */
 @media (max-width: 689px) {
+    /* pre auth btn container -> login/signup page*/
     .pre-auth-btn-container {
         display: flex;
         justify-content: center; 
@@ -190,17 +267,38 @@ body {
     .pre-auth-container p {
         width: 100%;
     }
+    /* end of pre auth container */
+
+    /* first auth container */
     .auth-wrapper {
         box-sizing: border-box;
         padding: 40px 15px 40px 15px;
         width: 100%;
     }
+
+    /* second auth container */
     .auth-box {
         box-sizing: border-box;
         height: 100vh;
         width: 100%;
     }
+
+    /* submit button */
     .submit-btn {
         width: 100%;
     }
+
+    .table-container {
+        margin: 10px;
+    }
+
+    th {
+        font-size: 10px;
+        padding: 0;
+        margin: 0;
+    }
+    td p {
+        font-size: 8px;
+    }
+    
 }

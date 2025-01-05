@@ -1,0 +1,58 @@
+{% extends 'auth_templates/auth_base.html' %}
+
+{% block title %}
+    orders
+{% endblock %}
+
+{% block content %}
+    <div class="auth-wrapper">
+        <div class="auth-box">
+            <div class="back-btn-container" style="padding-top:20px;">
+                <button class="get-back-btn" name="username_submit_btn" onclick="history.back()">
+                    <i class="fas fa-chevron-left" style="font-size: 24px;"></i>
+                </button>
+                <div class="auth-heading">
+                    <h2><strong>Orders</strong></h2>
+                </div>
+            </div>
+            <div class="profile-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="table-element"><p>ID</p></th>
+                            <th class="table-element"><p>Amount</p></th>
+                            <th class="table-element"><p>Status</p></th>
+                            <th class="table-element"><p>Type</p></th>
+                            <th class="table-element"><p>Date</p></th>
+                            <th class="table-element"><p>Reff. ID</p></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transaction in transactions %}
+                            <tr>
+                                <td>
+                                    {{ transaction.id }}
+                                </td>
+                                <td>
+                                    {{ transaction.amount }}
+                                </td>
+                                <td>
+                                    {{ transaction.status }}
+                                </td>
+                                <td>
+                                    {{ transaction.transaction_type }}
+                                </td>
+                                <td>
+                                    {{ transaction.created_at }}
+                                </td>
+                                <td>
+                                    {{ transaction.api_transaction_id }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %} 

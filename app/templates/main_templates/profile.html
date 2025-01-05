@@ -1,5 +1,38 @@
+{% extends 'auth_templates/auth_base.html' %}
+
 {% block title %}
+    sign up
 {% endblock %}
 
 {% block content %}
-{% endblock %}
+    <div class="auth-wrapper">
+        <div class="auth-box">
+            <div class="back-btn-container" style="padding-top:20px;">
+                <button class="get-back-btn" name="username_submit_btn" onclick="history.back()">
+                    <i class="fas fa-chevron-left" style="font-size: 24px;"></i>
+                </button>
+                <div class="auth-heading">
+                    <h2><strong>Profile</strong></h2>
+                </div>
+            </div>
+            <div class="profile-container">
+                <div class="profile-element">
+                    <p class="profile-label">Full Name:</p>
+                    <p class="profile-value">{{ current_user.name }}</p>
+                </div>
+                <div class="profile-element">
+                    <p class="profile-label">Email:</p>
+                    <p class="profile-value">{{ current_user.email }}</p>
+                </div>
+                <div class="profile-element">
+                    <p class="profile-label">Username:</p>
+                    <p class="profile-value">{{ current_user.username }}</p>
+                </div>
+                <div class="profile-element">
+                    <p class="profile-label">phone number:</p>
+                    <p class="profile-value">{{ current_user.phone_number }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %} 

@@ -1,0 +1,52 @@
+{% extends 'auth_templates/auth_base.html' %}
+
+{% block title %}
+    orders
+{% endblock %}
+
+{% block content %}
+    <div class="auth-wrapper">
+        <div class="auth-box">
+            <div class="back-btn-container" style="padding-top:20px;">
+                <button class="get-back-btn" name="username_submit_btn" onclick="history.back()">
+                    <i class="fas fa-chevron-left" style="font-size: 24px;"></i>
+                </button>
+                <div class="auth-heading">
+                    <h2><strong>Fundings</strong></h2>
+                </div>
+            </div>
+            <div class="profile-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Reff. ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for user_transaction in user_transactions %}
+                                {% if user_transaction %}
+                                    <td>
+                                        <!-- fundings transaction ids -->
+                                         {{ user_transaction.id }}
+                                    </td>
+                                    <td>
+                                        <!-- fundings transaction status -->
+                                        {{ user_transaction.status }}
+                                    </td>
+                                    <td>
+                                        <!-- fundings transaction reff ids -->
+                                        {{ user_transaction.api_transaction_id }}
+                                    </td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %} 

@@ -9,7 +9,7 @@ from .services import create_wallet_with_retries
 # blueprint definition
 auth = Blueprint("auth", __name__)
 
-# welcome route
+# a welcome route
 @auth.route("/", methods=['POST', 'GET'])
 def welcome():
     return render_template("auth_templates/welcome.html")
@@ -59,11 +59,11 @@ def sign_up():
             flash("Email already exists", category="error")
             return render_template('auth_templates/sign_up.html')
 
-        # bandwidth neglect this check
+
         # check if name is valid
-        # elif not full_name.isalpha() or not full_name.strip():
-        #     flash("Name must contain only alphabetic characters", category="error")
-        #     return render_template('auth_templates/sign_up.html')
+        elif not full_name.isalpha() or not full_name.strip():
+            flash("Name must contain only alphabetic characters", category="error")
+            return render_template('auth_templates/sign_up.html')
 
         elif len(full_name) < 3:
             flash("Name must be at least 3 characters long", category="error")
@@ -119,10 +119,10 @@ def sign_up():
             db.session.commit()
 
             # create api wallet for the user
-            api_wallet = create_wallet_with_retries(new_user)
-            if api_wallet["success"]:
+            response = create_wallet_with_retries(new_user)
+            if response["success"]:
                 # save the api wallet id to the database
-                new_user.api_wallet_id = api_wallet["wallet_id"]
+                new_user.api_wallet_id = response["wallet_id"]
                 db.session.commit()
 
             # login the user after signing up

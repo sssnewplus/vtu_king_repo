@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: fdf055694a9a
+Revision ID: 7640f79baa7d
 Revises: 
-Create Date: 2024-11-26 12:46:40.430536
+Create Date: 2024-12-30 17:23:08.368682
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'fdf055694a9a'
+revision = '7640f79baa7d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,9 +26,12 @@ def upgrade():
     sa.Column('password', sa.String(length=255), nullable=False),
     sa.Column('phone_number', sa.String(length=15), nullable=False),
     sa.Column('balance', sa.Float(), nullable=True),
+    sa.Column('api_wallet_account_number', sa.String(length=200), nullable=True),
+    sa.Column('pin', sa.String(length=4), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.Column('is_admin', sa.Boolean(), nullable=True),
+    sa.Column('referred_by', sa.String(length=80), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
@@ -45,24 +48,23 @@ def upgrade():
     )
     op.create_table('referrals',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('referred_user_id', sa.Integer(), nullable=False),
+    sa.Column('referrer_id', sa.Integer(), nullable=False),
     sa.Column('referral_bonus', sa.Float(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
-    sa.ForeignKeyConstraint(['referred_user_id'], ['users.id'], name='fk_referrals_referred_user_id'),
+    sa.ForeignKeyConstraint(['referrer_id'], ['users.id'], name='fk_referrals_referred_user_id'),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('transactions',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('transaction_id', sa.String(length=80), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('api_transaction_id', sa.String(length=100), nullable=True),
     sa.Column('transaction_type', sa.String(length=50), nullable=False),
     sa.Column('amount', sa.Float(), nullable=False),
     sa.Column('status', sa.String(length=50), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], name='fk_transactions_user_id'),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('transaction_id')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('airtime_or_data_purchases',
     sa.Column('id', sa.Integer(), nullable=False),

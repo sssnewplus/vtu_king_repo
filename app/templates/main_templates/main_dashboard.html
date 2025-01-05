@@ -31,7 +31,7 @@
                     <li class="bottom-navbar-list"><a href="{{ url_for('view.dashboard')}}">Services</a></li>
                     <li class="bottom-navbar-list"><a href="{{ url_for('view.profile')}}">Profile</a></li>
                     <li class="bottom-navbar-list"><a href="{{ url_for('view.setting')}}">Setting</a></li>
-                    <li class="bottom-navbar-list"><a href="{{ url_for('view.history')}}">History</a></li>
+                    <li class="bottom-navbar-list"><a href="#">History</a></li>
                 </ul>
             </div>
             <!-- end of top navbar navigations -->
@@ -62,11 +62,6 @@
                     <a href="{{ url_for('view.funding_wallet')}}" style="color: #fff; font-size: 16px;">Fund Wallet</a>
                 </div>
                 <div class="side-nav-item">
-                    <i class="fa-regular fa-user" style="color: #fff; font-size: 16px;"></i>
-                    <a href="{{ url_for('view.profile')}}" style="color: #fff; font-size: 16px;">Account</a>
-                </div>
-                <!-- <h2 style="font-size: 10; color: #fff; text-align: left;">Services</h2> -->
-                <div class="side-nav-item">
                     <i class="fas fa-mobile-alt" style="color: #fff; font-size: 16px;"></i>
                     <a href="{{ url_for('view.buying_airtime')}}" style="color: #fff; font-size: 16px;">Buy Airtime</a>
                 </div>
@@ -88,11 +83,11 @@
                 </div>
                 <div class="side-nav-item">
                     <i class="fas fa-plane" style="color: #fff; font-size: 16px;"></i>
-                    <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Travelling Agencies</a>
+                    <a href="#" style="color: #fff; font-size: 16px;">Travelling Agencies</a>
                 </div>
                 <div class="side-nav-item">
                     <i class="fas fa-file-invoice-dollar" style="color: #fff; font-size: 16px;"></i>
-                    <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Invoice Payment</a>
+                    <a href="#" style="color: #fff; font-size: 16px;">Invoice Payment</a>
                 </div>
                 <div class="side-nav-item">
                     <i class="fas fa-bus" style="color: #fff; font-size: 16px;"></i>
@@ -100,20 +95,24 @@
                 </div>
                 <div class="side-nav-item">
                     <i class="fas fa-shopping-cart" style="color: #fff; font-size: 16px;"></i>
-                    <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Online Shopping</a>
+                    <a href="#" style="color: #fff; font-size: 16px;">Online Shopping</a>
                 </div>
-                <div class="side-nav-item-drop">
+                <div class="side-nav-item">
+                    <i class="fa-regular fa-user" style="color: #fff; font-size: 16px;"></i>
+                    <a href="{{ url_for('view.profile')}}" style="color: #fff; font-size: 16px;">Account</a>
+                </div>
+               <!-- <div class="side-nav-item-drop"> -->
                     <div class="side-nav-item">
                         <i class="fas fa-bus" style="color: #fff; font-size: 16px;"></i>
-                        <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">History</a>
-                        <i class="fas fa-chevron-down" style="color: #fff; font-size: 16px;"></i>
+                        <a href="#" style="color: #fff; font-size: 16px;">History</a>
+                        <!-- <i class="fas fa-chevron-down" style="color: #fff; font-size: 16px;"></i> -->
                     </div>
                     <div class="side-nav-item">
                         <i class="fas fa-shopping-cart" style="color: #fff; font-size: 16px;"></i>
-                        <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Settings</a>
-                        <i class="fas fa-chevron-down" style="color: #fff; font-size: 16px;"></i>
+                        <a href="{{ url_for('view.setting')}}" style="color: #fff; font-size: 16px;">Settings</a>
+                        <!-- <i class="fas fa-chevron-down" style="color: #fff; font-size: 16px;"></i> -->
                     </div>
-                </div>
+                <!-- </div> -->
                 <div class="side-nav-item">
                     <i class="fas fa-power-off" style="color: red; font-size: 16px;"></i>
                     <a href="{{ url_for('auth.logout')}}" style="color: #fff; font-size: 16px;">Log Out</a>
@@ -133,10 +132,6 @@
                     <i class="fas fa-wallet" style="color: #fff; font-size: 16px;"></i>
                     <a href="{{ url_for('view.funding_wallet')}}" style="color: #fff; font-size: 16px;">Fund Wallet</a>
                 </div>
-                <div class="side-nav-item">
-                    <i class="fa-regular fa-user" style="color: #fff; font-size: 16px;"></i>
-                    <a href="{{ url_for('view.profile')}}" style="color: #fff; font-size: 16px;">Account</a>
-                </div>
                 <!-- <h2 style="font-size: 10; color: #fff; text-align: left;">Services</h2> -->
                 <div class="side-nav-item">
                     <i class="fas fa-mobile-alt" style="color: #fff; font-size: 16px;"></i>
@@ -174,18 +169,22 @@
                     <i class="fas fa-shopping-cart" style="color: #fff; font-size: 16px;"></i>
                     <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Online Shopping</a>
                 </div>
-                <div class="side-nav-item-drop">
+                <div class="side-nav-item">
+                    <i class="fa-regular fa-user" style="color: #fff; font-size: 16px;"></i>
+                    <a href="{{ url_for('view.profile')}}" style="color: #fff; font-size: 16px;">Account</a>
+                </div>
+                <!-- <div class="side-nav-item-drop"> -->
                     <div class="side-nav-item">
                         <i class="fas fa-bus" style="color: #fff; font-size: 16px;"></i>
                         <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">History</a>
-                        <i class="fas fa-chevron-down" style="color: #fff; font-size: 16px;"></i>
+                        <!-- <i class="fas fa-chevron-down" style="color: #fff; font-size: 16px;"></i> -->
                     </div>
                     <div class="side-nav-item">
                         <i class="fas fa-shopping-cart" style="color: #fff; font-size: 16px;"></i>
                         <a href="{{ url_for('view.paying_electricity')}}" style="color: #fff; font-size: 16px;">Settings</a>
-                        <i class="fas fa-chevron-down" style="color: #fff; font-size: 16px;"></i>
+                        <!-- <i class="fas fa-chevron-down" style="color: #fff; font-size: 16px;"></i> -->
                     </div>
-                </div>
+                <!-- </div> -->
                 <div class="side-nav-item">
                     <i class="fas fa-power-off" style="color: red; font-size: 16px;"></i>
                     <a href="{{ url_for('auth.logout')}}" style="color: #fff; font-size: 16px;">Log Out</a>
@@ -250,11 +249,11 @@
                         <p class="acc-details-text">Account Name:</p>
                     </div>
                     <div class="account-details-container">
-                        <p class="acc-details-text">******67
+                        <p class="acc-details-text">{{ current_user.api_wallet_account_number }}
                             <i class="fas fa-copy" style="color: #256d85; font-size: 24px;"></i>
                         </p>
                         <p class="acc-details-text">Opay</p>
-                        <p class="acc-details-text">Habibu Danlami</p>
+                        <p class="acc-details-text">{{ current_user.name }}</p>
                     </div>  
                     <div class="between-acc-details">
                         <p class="acc-details-text">Opay</p>
@@ -388,7 +387,7 @@
                     </div> 
                     <div class="account-details-container">
                         <div class="fund">
-                            <button type="button" onclick="location.href='/fundings'">
+                            <button type="button" onclick="location.href='/funding'">
                                 Fundings
                             </button>
                         </div>

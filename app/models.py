@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(255), nullable=False) # store user hashed password
     phone_number = db.Column(db.String(15), nullable=False) # store user phone number
     balance = db.Column(db.Float, default=0.0) # store user balance
-    api_wallet_id = db.Column(db.String(200)) # store id of api wallet
+    # api_wallet_id = db.Column(db.String(200)) # store id of api wallet
     api_wallet_account_number = db.Column(db.String(200)) # store api wallet account number
     pin = db.Column(db.String(4), nullable=False, default='1111') # store user pin for transaction
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc)) # store time when the user was created
@@ -47,7 +47,7 @@ class User(db.Model, UserMixin):
     def set_password(self, new_password):
         self.password = generate_password_hash(new_password)
         db.session.commit() 
-
+   
     # method to change password
     def change_password(self, old_password, new_password):
         if check_password_hash(self.password, old_password):
@@ -175,12 +175,11 @@ class User(db.Model, UserMixin):
 class Transaction(db.Model):
     __tablename__ = 'transactions'
     id = db.Column(db.Integer, primary_key=True)
-    # transaction_id = db.Column(db.String(80), unique=True, nullable=False)
+    
     # foreign key (one transaction can have one id of user, 1 -> 1)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', name='fk_transactions_user_id'), nullable=False)
     api_transaction_id = db.Column(db.String(100), nullable=True)  # Store API transaction ID
     transaction_type = db.Column(db.String(50), nullable=False)
-    cost_price = db.Column(db.Float, nullable=False)
     amount = db.Column(db.Float, nullable=False)
     status = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))

@@ -22,12 +22,14 @@
             const balanceElement = document.getElementById('user_balance');
             const balanceElement2 = document.getElementById('user_balance1')
             const toggleIcon = document.getElementById('toggle_balance');
-        
-            if (balanceElement.dataset.hidden === "true") {
+            const data1 = balanceElement.dataset.hidden
+            const data2 = balanceElement2.dataset.hidden
 
+            if (data1 && data2 === "true") {
                 // the balances are two one for mobile view the other for system view
                 balanceElement.textContent = balanceElement.dataset.balance; // Show balance
                 balanceElement.dataset.hidden = "false";
+
                 balanceElement2.textContent = balanceElement.dataset.balance; // Show balance
                 balanceElement2.dataset.hidden = "false";
                 toggleIcon.className = "fa fa-eye";
@@ -35,6 +37,7 @@
                 balanceElement.dataset.balance = balanceElement.textContent; // Store balance
                 balanceElement.textContent = "*****"; // hide balance (put it to mask)
                 balanceElement.dataset.hidden = "true";
+
                 balanceElement2.dataset.balance = balanceElement.textContent; // Store balance
                 balanceElement2.textContent = "*****"; // hide balance (put it to mask)
                 balanceElement2.dataset.hidden = "true";
@@ -64,6 +67,19 @@
                 hamburger_icon.classList.add('fa-chevron-left')
             }
         }
+
+        // Function to show the popup
+        function showPopup() {
+            const modal = document.getElementById('popupModal');
+            modal.style.display = 'block'; // Show the modal
+        }
+        
+        // Close the modal when the close button is clicked
+        document.querySelectorAll('.close').forEach((closeBtn) => {
+            closeBtn.addEventListener('click', () => {
+            document.getElementById('popupModal').style.display = 'none';
+            });
+        });
     </script>
 </body>
 </html>
